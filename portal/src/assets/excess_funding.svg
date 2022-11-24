@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .cls-1,.cls-2{fill:none}.cls-2{stroke-linecap:round;stroke-linejoin:round}.cls-3,.cls-5{fill:#fe9411}.cls-4,.cls-5{stroke:none}
+        </style>
+    </defs>
+    <g id="Group_8068" data-name="Group 8068" transform="translate(-33 -295)">
+        <path id="Rectangle_5334" d="M0 0h24v24H0z" class="cls-1" data-name="Rectangle 5334" transform="translate(33 295)"/>
+        <g id="Group_8056" data-name="Group 8056" transform="translate(0 1)">
+            <g id="Polygon_1" class="cls-2" data-name="Polygon 1">
+                <path d="M7.63 1.535a1 1 0 0 1 1.74 0l6.784 11.972a1 1 0 0 1-.87 1.493H1.716a1 1 0 0 1-.87-1.493z" class="cls-4" transform="translate(37 298)"/>
+                <path d="M8.5 2.028L1.716 14h13.568L8.5 2.028m0-1a.99.99 0 0 1 .87.507l6.784 11.972a1 1 0 0 1-.87 1.493H1.716a1 1 0 0 1-.87-1.493L7.63 1.535a.99.99 0 0 1 .87-.507z" class="cls-5" transform="translate(37 298)"/>
+            </g>
+            <g id="Group_7900" data-name="Group 7900" transform="translate(44.87 303.037)">
+                <rect id="Rectangle_3" width="1.204" height="4.779" class="cls-3" data-name="Rectangle 3" rx=".602"/>
+                <rect id="Rectangle_4" width="1.204" height="1.204" class="cls-3" data-name="Rectangle 4" rx=".602" transform="translate(0 5.904)"/>
+            </g>
+        </g>
+    </g>
+</svg>

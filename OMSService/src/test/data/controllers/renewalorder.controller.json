@@ -1,0 +1,986 @@
+{
+  "sendSigningSMS": {
+    "data": {
+      "order": {
+        "orderId": "7820-231031-7635",
+        "customerId": "5cee5d0e12274976625b9446",
+        "type": "5e716aaced8f8a76149bc38c",
+        "status": "pending",
+        "amount": 17621,
+        "signingmethod": {
+          "id": "5e4fedfb2c2e86799472c5f1",
+          "name": "digital",
+          "description": "Digital Sign"
+        },
+        "paymentmethod": { "name": "razorpay" },
+        "signingstatus": "success",
+        "paymentstatus": "success",
+        "loanstatus": "pending",
+        "poll": true,
+        "locksign": false
+      }
+    },
+    "response": {
+      "code": 200,
+      "message": "Signing SMS sent successfully"
+    }
+  },
+  "cancel": {
+    "data": { "processId": "2251799815005836" },
+    "response": {}
+  },
+  "ListSigningMethod": {
+    "data": {
+      "user": {
+        "customerprofile": "59d8bc66446adf560833077b",
+        "cityid": 1,
+        "firstname": "Mark",
+        "langpref": "en",
+        "phone": "9036627235",
+        "userreferralcode": "vams783",
+        "phones": ["9036627235"],
+        "username": "vamshi",
+        "emailstatus": false,
+        "role": "customer",
+        "roles": ["customer"],
+        "phonestatus": true,
+        "archived": false,
+        "picid": "default",
+        "leadid": "h9L6Ds-00000193",
+        "offercode": "RPK200",
+        "lastname": "Mark",
+        "kycnameupdated": true,
+        "source": "core",
+        "id": "5cd3d6ca613235d408b1ac2b",
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjVjZDNkNmNhNjEzMjM1ZDQwOGIxYWMyYiIsImNyZWF0ZWRBdCI6IjIwMTktMDUtMDlUMDc6Mjk6MTQuNjM0WiIsImlhdCI6MTYwNTc2MTU1OCwiZXhwIjoxNjM3Mjk3NTU4LCJhdWQiOiJydXBlZWsuY29tIiwiaXNzIjoicnVwZWVrLmNvbSJ9.A_cF7eqlnKSpxqId2U31w4zGvzKy4Dc4pJ90mQT6NuA"
+      },
+      "orderId": "7820-386783-0661",
+      "customerId": "5cd3d6ca613235d408b1ac2b",
+      "order": {
+        "orderId": "7820-386783-0661",
+        "customerId": "5cd3d6ca613235d408b1ac2b",
+        "type": "5e716aaced8f8a76149bc38c",
+        "status": "created",
+        "amount": 6634,
+        "paymentmethod": { "name": "razorpay" },
+        "signingstatus": "pending",
+        "paymentstatus": "pending",
+        "loanstatus": "pending",
+        "poll": true,
+        "locksign": false
+      },
+      "signingtypes": [
+        {
+          "id": "5e4fee7c2c2e86799472c5f3",
+          "name": "physical",
+          "description": "Physical sign"
+        },
+        {
+          "id": "5e4fee5d2c2e86799472c5f2",
+          "name": "esign",
+          "description": "Aadhaar based Esign"
+        }
+      ]
+    },
+    "response": {
+      "code": 200,
+      "message": "Signing Method(s) fetched successfully",
+      "methods": [
+        {
+          "id": "5e4fee7c2c2e86799472c5f3",
+          "name": "physical",
+          "description": "Physical sign"
+        },
+        {
+          "id": "5e4fee5d2c2e86799472c5f2",
+          "name": "esign",
+          "description": "Aadhaar based Esign"
+        }
+      ]
+    }
+  },
+  "listPaymentMethods": {
+    "data": {
+      "orderId": "7820-335219-9594",
+      "user": {
+        "customerprofile": "5e3167b0dd004b1f637c7905",
+        "cityid": 1,
+        "firstname": "শ্বাগনিক দত্তো",
+        "lastname": "Dutta",
+        "phone": "9874281676",
+        "phonestatus": true,
+        "userreferralcode": "ops626",
+        "username": "swagnikdutta",
+        "emailstatus": false,
+        "langpref": "en",
+        "role": "customer",
+        "archived": false,
+        "picid": "default",
+        "roles": ["opsadmin", "audithead", "customer", "admin"],
+        "phones": ["9874281676"],
+        "id": "5d7643118fadf1bac8c90473",
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjVkNzY0MzExOGZhZGYxYmFjOGM5MDQ3MyIsImNyZWF0ZWRBdCI6IjIwMTgtMDYtMTVUMDk6MTM6MzIuMjA3WiIsImlhdCI6MTYwNTc3Mjg5NywiZXhwIjoxNjM3MzA4ODk3LCJhdWQiOiJydXBlZWsuY29tIiwiaXNzIjoicnVwZWVrLmNvbSJ9.GGCayQXf4IOCuEq-cVclD7vhz6jRveXOkrbH5vtVxVM"
+      },
+      "order": {
+        "orderId": "7820-335219-9594",
+        "customerId": "5d7643118fadf1bac8c90473",
+        "type": {
+          "id": "5e716aaced8f8a76149bc38c",
+          "name": "renewal",
+          "description": "Renewal Order"
+        },
+        "status": "pending",
+        "amount": 6118,
+        "signingmethod": {
+          "id": "5e4fee5d2c2e86799472c5f2",
+          "name": "esign",
+          "description": "Aadhaar based Esign"
+        },
+        "paymentmethod": {
+          "name": "razorpay"
+        },
+        "signingstatus": "pending",
+        "paymentstatus": "pending",
+        "loanstatus": "pending",
+        "poll": true,
+        "locksign": false
+      },
+      "response": [
+        {
+          "id": 1,
+          "name": "netbanking"
+        }
+      ]
+    },
+    "response": [
+      {
+        "code": 200,
+        "message": "Payment Method(s) fetched successfully",
+        "methods": [
+          {
+            "id": 1,
+            "name": "netbanking"
+          }
+        ]
+      },
+      {
+        "code": 200,
+        "message": "Payment Method(s) fetched successfully",
+        "methods": [
+          {
+            "id": 1,
+            "name": "netbanking"
+          }
+        ],
+        "order": {
+          "orderId": "7820-335219-9594",
+          "customerId": "5d7643118fadf1bac8c90473",
+          "type": {
+            "id": "5e716aaced8f8a76149bc38c",
+            "name": "renewal",
+            "description": "Renewal Order"
+          },
+          "status": "pending",
+          "amount": 6118,
+          "signingmethod": {
+            "id": "5e4fee5d2c2e86799472c5f2",
+            "name": "esign",
+            "description": "Aadhaar based Esign"
+          },
+          "paymentmethod": { "name": "razorpay" },
+          "signingstatus": "pending",
+          "paymentstatus": "pending",
+          "loanstatus": "pending",
+          "poll": true,
+          "locksign": false
+        }
+      }
+    ]
+  },
+  "updateSigningMethod": {
+    "data": {
+      "user": {
+        "customerprofile": "59d8bc66446adf560833077b",
+        "cityid": 1,
+        "firstname": "Mark",
+        "langpref": "en",
+        "phone": "9036627235",
+        "userreferralcode": "vams783",
+        "phones": ["9036627235"],
+        "username": "vamshi",
+        "emailstatus": false,
+        "role": "customer",
+        "roles": ["customer"],
+        "phonestatus": true,
+        "archived": false,
+        "picid": "default",
+        "leadid": "h9L6Ds-00000193",
+        "offercode": "RPK200",
+        "lastname": "Mark",
+        "kycnameupdated": true,
+        "source": "core",
+        "id": "5cd3d6ca613235d408b1ac2b",
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6IjVjZDNkNmNhNjEzMjM1ZDQwOGIxYWMyYiIsImNyZWF0ZWRBdCI6IjIwMTktMDUtMDlUMDc6Mjk6MTQuNjM0WiIsImlhdCI6MTYwNTc2MTU1OCwiZXhwIjoxNjM3Mjk3NTU4LCJhdWQiOiJydXBlZWsuY29tIiwiaXNzIjoicnVwZWVrLmNvbSJ9.A_cF7eqlnKSpxqId2U31w4zGvzKy4Dc4pJ90mQT6NuA"
+      },
+      "body": { "id": "5e4fee7c2c2e86799472c5f3", "name": "physical" },
+      "orderId": "7820-386783-0661",
+      "customerId": "5cd3d6ca613235d408b1ac2b",
+      "order": {
+        "orderId": "7820-386783-0661",
+        "customerId": "5cd3d6ca613235d408b1ac2b",
+        "type": "5e716aaced8f8a76149bc38c",
+        "status": "created",
+        "amount": 6634,
+        "paymentmethod": { "name": "razorpay" },
+        "signingstatus": "pending",
+        "paymentstatus": "pending",
+        "loanstatus": "pending",
+        "poll": true,
+        "locksign": false
+      },
+      "signingtypes": [
+        {
+          "id": "5e4fee7c2c2e86799472c5f3",
+          "name": "physical",
+          "description": "Physical sign"
+        },
+        {
+          "id": "5e4fee5d2c2e86799472c5f2",
+          "name": "esign",
+          "description": "Aadhaar based Esign"
+        }
+      ]
+    },
+    "response": {
+      "code": 200,
+      "message": "Signing Method updated successfully"
+    }
+  },
+  "createRenewalOrder": {
+    "body": {
+      "loans": [
+        {
+          "loanid": "825022934132056",
+          "coreid": "90191",
+          "eligibleweight": 133,
+          "keyword": "ENHANCE"
+        }
+      ],
+      "scheme": {
+        "id": "B1Z1CJ5R",
+        "archived": false,
+        "masterSchemeId": "B1Z1CJ5R",
+        "coreSchemeId": "5a2e18fcc805bdbf44b73099-737",
+        "schemeName": "No Tension Max value",
+        "description": "79 LTV 6M <2L Fed",
+        "tenure": 6,
+        "groupTags": ["migrated", "cust-facing"],
+        "applicableProcesses": [
+          "takeover-loan",
+          "fresh-loan",
+          "part-release",
+          "renewal"
+        ],
+        "fulfillmentChannels": ["digital-platforms", "branch", "doorstep"],
+        "goldBenchmark": "agloc",
+        "interestCalculation": {
+          "interestRate": 19.76,
+          "type": "flat",
+          "interestType": "compound",
+          "compoundingPeriod": "monthly"
+        },
+        "customerLtv": 79,
+        "enabled": true,
+        "baseSchemes": [
+          {
+            "id": "5f90413684047040c9ef1596",
+            "archived": false,
+            "baseSchemeId": "0ZAQ5BPR",
+            "legalName": "Rupeek Rebate Scheme",
+            "type": "secure",
+            "lenderId": "5a2e18fcc805bdbf44b73099",
+            "goldBenchmark": "ibja",
+            "interestCalculation": {
+              "interestRate": 19,
+              "type": "flat",
+              "interestType": "compound",
+              "compoundingPeriod": "monthly"
+            },
+            "addons": [
+              {
+                "id": "5f90413684047040c9ef1594",
+                "archived": false,
+                "type": "flat",
+                "description": null,
+                "cashback": true,
+                "interestRate": 19.76
+              }
+            ],
+            "charges": [
+              {
+                "id": "5f90413684047040c9ef1598",
+                "archived": false,
+                "baseSchemeId": "0ZAQ5BPR",
+                "chargeName": "Penal Charge",
+                "chargeType": "penal",
+                "chargeCalculationType": "fixed-percentage",
+                "applicableProcesses": ["release"],
+                "chargeValue": 2,
+                "maxValue": null,
+                "cityId": null,
+                "percentageOn": null,
+                "minValue": null,
+                "isTaxable": false
+              }
+            ],
+            "ltv": 79
+          }
+        ],
+        "eligibility": {
+          "id": "5f90413684047040c9ef159c",
+          "archived": false,
+          "masterSchemeId": "B1Z1CJ5R",
+          "ticketSizeMinAmount": 20000,
+          "ticketSizeMaxAmount": 200000,
+          "cityIds": [
+            1, 2, 3, 4, 5, 6, 7, 9, 10, 12, 13, 14, 15, 17, 16, 18, 19, 21, 20,
+            11
+          ]
+        },
+        "displayConfigs": [
+          {
+            "id": "5f90413684047040c9ef159e",
+            "archived": false,
+            "masterSchemeId": "B1Z1CJ5R",
+            "client": null,
+            "displayType": null,
+            "displayProperties": {
+              "ltvText": "MAX VALUE",
+              "referenceName": "Fed Flat 79 1.65% 6M <2L Flat"
+            },
+            "visible": true
+          }
+        ],
+        "productCategory": "goldloan"
+      }
+    },
+    "data": {
+      "_id": "5f313a7b3b89747d08a7da34",
+      "paymentmethod": { "name": "razorpay" },
+      "signingstatus": "pending",
+      "paymentstatus": "pending",
+      "loanstatus": "pending",
+      "status": "created",
+      "__t": "RenewalOrder",
+      "orderId": "7093-287300-2263",
+      "customerId": "5c738ff829fdce193c4e638c",
+      "type": "5ee75a6dc13eff67f7e90e33",
+      "amount": 755297,
+      "schemedata": {
+        "schemename": "Rupeek Rebate Scheme",
+        "appschemename": "Fed RR 77 19.76% 6M >5L",
+        "appdisplayname": "Regular Rebate High Value",
+        "webschemename": "Regular Rebate High Value",
+        "description": "77 LTV 6M >5L Fed",
+        "interestrate": 19,
+        "ltv": 76,
+        "tenure": 6,
+        "bullet": true,
+        "penal": 2,
+        "min": 500000,
+        "max": 500000000,
+        "si": false,
+        "ci": true,
+        "hidden": true,
+        "cities": [1],
+        "ltvtopup": true,
+        "topupdetails": {
+          "maxpercentage": 10,
+          "interestrate": 19.76,
+          "pledgecardinterestrate": 19.76,
+          "tenure": 6,
+          "schemename": "Support GL",
+          "branchname": "Adugodi",
+          "branchid": "5ac38583aa1a12f3691dc18e",
+          "lenderid": "5b5b1cb08ca5d06304f47cdc",
+          "matchingbenchmark": "agloc",
+          "matchingpercent": 75,
+          "rcplpenal": 12,
+          "stamp": [{ "city": 1, "series": "1", "stampcharges": 100 }],
+          "rcpljumping": { "0": 10.68, "31": 17.88, "61": 19.76 }
+        },
+        "cashback": true,
+        "cashbackjumping": true,
+        "cashbackinterestrate": 10.68,
+        "jumpingschedule": { "0": 10.68, "31": 17.88, "61": 19.76 },
+        "id": 68
+      },
+      "meta": {
+        "renewaltype": "1:1",
+        "ispartial": false,
+        "islocked": false,
+        "tenureextension": true
+      },
+      "timestamps": { "created": "2020-08-10T12:15:55.002Z" },
+      "createdAt": "2020-08-10T12:15:55.004Z",
+      "updatedAt": "2020-08-10T12:15:55.004Z"
+    },
+    "response": {
+      "code": 201,
+      "message": "Renewal Order created successfully",
+      "order": "7093-287300-2263"
+    }
+  },
+  "readRenewalOrder": {
+    "body": {
+      "params": { "orderId": "7096-691351-7845" },
+      "user": { "id": "1245" }
+    },
+    "data": {
+      "_id": "5ee87d4eabb6346fcc114d5d",
+      "paymentmethod": { "name": "razorpay" },
+      "signingstatus": "success",
+      "paymentstatus": "success",
+      "loanstatus": "pending",
+      "status": "pending",
+      "orderId": "7096-691351-7845",
+      "customerId": "5edf812a47e9ec4546c18681",
+      "payment": {
+        "_id": "5ee87dddabb6346fcc114d5f",
+        "status": "success",
+        "retry": false,
+        "orderId": "5ee87d4eabb6346fcc114d5d",
+        "requestId": "RPK1592294877655",
+        "createdAt": "2020-06-16T08:07:57.891Z",
+        "updatedAt": "2020-06-16T08:08:16.926Z",
+        "meta": {
+          "pgresponse": {
+            "payment": {
+              "entity": {
+                "id": "pay_F3Dxcrf7IdU7io",
+                "entity": "payment",
+                "amount": 19805800,
+                "currency": "INR",
+                "status": "captured",
+                "order_id": null,
+                "invoice_id": null,
+                "international": false,
+                "method": "netbanking",
+                "amount_refunded": 0,
+                "refund_status": null,
+                "captured": true,
+                "description": "Payment for RPK1592294877655 with amount 198058",
+                "card_id": null,
+                "bank": "HDFC",
+                "wallet": null,
+                "vpa": null,
+                "email": "void@razorpay.com",
+                "contact": "+91911111111111",
+                "notes": { "order_id": "RPK1592294877655" },
+                "fee": 2950,
+                "tax": 450,
+                "error_code": null,
+                "error_description": null,
+                "error_source": null,
+                "error_step": null,
+                "error_reason": null,
+                "created_at": 1592294886
+              }
+            }
+          },
+          "loandata": [
+            {
+              "createdAt": "2020-06-16T08:07:57.856Z",
+              "updatedAt": "2020-06-16T08:07:57.856Z",
+              "id": 21384,
+              "paidamount": 193582,
+              "cashback": 34,
+              "scheme": "18.96",
+              "utrnumber": null,
+              "status": "PENDING",
+              "updatedby": null,
+              "verificationstatus": null,
+              "subtype": "partial",
+              "repledgeverified": null,
+              "request": 17250,
+              "loan": {
+                "createdAt": "2020-03-20",
+                "updatedAt": "2020-06-16T08:08:16.601Z",
+                "id": 20385,
+                "loanid": "526511527978221",
+                "referencenumber": "IBNHQ",
+                "isurecode": "TDATA",
+                "coreid": "24855",
+                "loanamount": 230064,
+                "balanceamount": 225064,
+                "loanstartedon": "2020-03-20T00:00:00.000Z",
+                "dayselapsed": 6,
+                "scheme": "19.76",
+                "interest": 2000,
+                "closingamount": 232064,
+                "renewalamount": 238065,
+                "preclosurecharges": 0,
+                "preclosure": 0,
+                "othercharges": 0,
+                "netweight": 220,
+                "statuscode": 1,
+                "fetchedon": "2020-12-12T00:00:00.000Z",
+                "lenderid": "federal",
+                "razorpayvan": "2223331100024855",
+                "repledged": false,
+                "schemeid": "14",
+                "recovery": 0,
+                "ref_no": "NQRk",
+                "loan_count": 1,
+                "ltv": 68,
+                "reconrecovery": 0,
+                "hardrecovery": 0,
+                "recoverytype": "0,0",
+                "repledgeverifytype": "OTP",
+                "schemename": null,
+                "expirydate": null,
+                "loanof": 2882,
+                "branch": 16,
+                "repledgerequest": 17250
+              }
+            },
+            {
+              "createdAt": "2020-06-16T08:07:57.856Z",
+              "updatedAt": "2020-06-16T08:07:57.856Z",
+              "id": 21385,
+              "paidamount": 4476,
+              "cashback": 1,
+              "scheme": "18.96",
+              "utrnumber": null,
+              "status": "PENDING",
+              "updatedby": null,
+              "verificationstatus": null,
+              "subtype": "partial",
+              "repledgeverified": null,
+              "request": 17250,
+              "loan": {
+                "createdAt": "2020-03-20",
+                "updatedAt": "2020-06-16T08:08:16.635Z",
+                "id": 20386,
+                "loanid": "1045785773381",
+                "referencenumber": "IBNHQ",
+                "isurecode": "TDATA",
+                "coreid": "41101",
+                "loanamount": 10000,
+                "balanceamount": 9500,
+                "loanstartedon": "2020-03-20T00:00:00.000Z",
+                "dayselapsed": 6,
+                "scheme": "19.76",
+                "interest": 172,
+                "closingamount": 10172,
+                "renewalamount": 10907,
+                "preclosurecharges": 0,
+                "preclosure": 0,
+                "othercharges": 0,
+                "netweight": 0,
+                "statuscode": 1,
+                "fetchedon": "2020-12-12T00:00:00.000Z",
+                "lenderid": "rupeek",
+                "razorpayvan": null,
+                "repledged": false,
+                "schemeid": "14",
+                "recovery": 0,
+                "ref_no": "24855",
+                "loan_count": 2,
+                "ltv": null,
+                "reconrecovery": 0,
+                "hardrecovery": 0,
+                "recoverytype": "0,0",
+                "repledgeverifytype": null,
+                "schemename": null,
+                "expirydate": null,
+                "loanof": 2882,
+                "branch": 13,
+                "repledgerequest": 17250
+              }
+            }
+          ]
+        }
+      },
+      "items": {
+        "_id": "5ee87d4eabb6346fcc114d5e",
+        "orderId": "5ee87d4eabb6346fcc114d5d",
+        "meta": {
+          "lmsid": "526511527978221",
+          "losid": 24855,
+          "lender": "federal",
+          "unsecurelmsid": "1045785773381",
+          "unsecurelosid": 41101,
+          "unsecurelender": "rupeek",
+          "oldunsecureamount": 10000,
+          "unsecurepaidamount": 677,
+          "unsecurecashback": 1,
+          "unsecureexcessfunding": 0,
+          "unsecureclosingamount": 10172,
+          "unsecurenextworkingdayinterest": 5,
+          "unsecurenextworkingdaycashback": 0,
+          "newunsecurelmsid": null,
+          "newunsecurelosid": 41101,
+          "newunsecureamount": 5700,
+          "newlmsid": null,
+          "newlosid": 24855,
+          "oldsecureamount": 230064,
+          "newsecureamount": 38570,
+          "repledgetype": "ENHANCE",
+          "securepaidamount": 198058,
+          "oldloandate": "2020-03-20T00:00:00.000Z",
+          "newloandate": "2020-06-17T00:00:00.000Z",
+          "oldscheme": {
+            "schemename": "Rupeek Rebate Scheme",
+            "appschemename": "Rupeek No Tension BLR FED 77 6M - 18.96%",
+            "webschemename": "Rupeek No Tension",
+            "description": "Scheme for loan amount between 20K and 5L",
+            "appdisplayname": "Rupeek No Tension",
+            "interestrate": 19,
+            "ltv": 68,
+            "tenure": 6,
+            "bullet": true,
+            "penal": 2,
+            "min": 20000,
+            "max": 200000,
+            "si": false,
+            "ci": true,
+            "hidden": true,
+            "picture": "3a4e0ba1-19c4-4cf5-8cea-2533ab0add31",
+            "cities": [1],
+            "ltvtopup": true,
+            "topupdetails": {
+              "maxpercentage": 15,
+              "interestrate": 19.76,
+              "tenure": 6,
+              "schemename": "Support GL",
+              "branchname": "Adugodi",
+              "branchid": "5ac38583aa1a12f3691dc18e",
+              "lenderid": "5b5b1cb08ca5d06304f47cdc",
+              "matchingbenchmark": "ibja",
+              "matchingpercent": 78,
+              "stamp": [{ "city": 1, "series": "02", "stampcharges": 100 }]
+            },
+            "cashback": true,
+            "cashbackjumping": false,
+            "cashbackinterestrate": 18.96,
+            "id": 14,
+            "appdisplay": true,
+            "appdisplaytext": {
+              "schemeheader": "Suitable for Business Community, Traders, Shop Owners, Property Dealers etc.",
+              "paymentinfo": "Rebate will be given to achieve effective interest rate"
+            },
+            "appdisplayinterestrate": 1.58,
+            "mwebsavingamount": 44700
+          },
+          "newscheme": {
+            "schemename": "Rupeek Rebate Scheme",
+            "appschemename": "Rupeek No Tension Power HYD FED 78 6M - 16.53%",
+            "webschemename": "Rupeek No Tension Power",
+            "description": "Scheme for loan amount between 2L and 5L",
+            "interestrate": 19,
+            "ltv": 68,
+            "tenure": 6,
+            "bullet": true,
+            "penal": 2,
+            "min": 200000,
+            "max": 500000,
+            "si": false,
+            "ci": true,
+            "hidden": true,
+            "picture": "3a4e0ba1-19c4-4cf5-8cea-2533ab0add31",
+            "cities": [1],
+            "ltvtopup": true,
+            "topupdetails": {
+              "maxpercentage": 15,
+              "interestrate": 16.53,
+              "pledgecardinterestrate": 16.53,
+              "tenure": 6,
+              "schemename": "Support GL",
+              "branchname": "Secunderabad",
+              "branchid": "5b963c7b1746523269902621",
+              "lenderid": "5b5b1cb08ca5d06304f47cdc",
+              "matchingbenchmark": "ibja",
+              "matchingpercent": 78,
+              "stamp": [{ "city": 3, "series": "02", "stampcharges": 100 }]
+            },
+            "cashback": true,
+            "mwebsavingamount": 148200,
+            "cashbackjumping": false,
+            "cashbackinterestrate": 16.53,
+            "appdisplaytext": {
+              "schemeheader": "Suitable for Business Community, Traders, Shop Owners, Property Dealers etc.",
+              "paymentinfo": "Rebate will be given to achieve effective interest rate"
+            },
+            "id": 60
+          },
+          "securecashback": 34,
+          "secureexcessfunding": 0,
+          "secureclosingamount": 232064,
+          "oldloantype": "1:1",
+          "newloantype": "1:1",
+          "eligibleweight": 19,
+          "securenextworkingdayinterest": 122,
+          "securenextworkingdaycashback": 5,
+          "daysinnextworkingday": 1
+        },
+        "createdAt": "2020-06-16T08:05:34.174Z",
+        "updatedAt": "2020-06-16T08:08:18.876Z"
+      },
+      "type": {
+        "_id": "5ee75a6dc13eff67f7e90e33",
+        "archived": false,
+        "name": "renewal",
+        "description": "renewal order",
+        "createdAt": "2020-06-15T11:24:29.658Z",
+        "updatedAt": "2020-06-15T11:24:29.658Z"
+      },
+      "amount": 198058,
+      "schemedata": {
+        "schemename": "Rupeek Rebate Scheme",
+        "appschemename": "Rupeek No Tension Power HYD FED 78 6M - 16.53%",
+        "webschemename": "Rupeek No Tension Power",
+        "description": "Scheme for loan amount between 2L and 5L",
+        "interestrate": 19,
+        "ltv": 68,
+        "tenure": 6,
+        "bullet": true,
+        "penal": 2,
+        "min": 200000,
+        "max": 500000,
+        "si": false,
+        "ci": true,
+        "hidden": true,
+        "picture": "3a4e0ba1-19c4-4cf5-8cea-2533ab0add31",
+        "cities": [1],
+        "ltvtopup": true,
+        "topupdetails": {
+          "maxpercentage": 15,
+          "interestrate": 16.53,
+          "pledgecardinterestrate": 16.53,
+          "tenure": 6,
+          "schemename": "Support GL",
+          "branchname": "Secunderabad",
+          "branchid": "5b963c7b1746523269902621",
+          "lenderid": "5b5b1cb08ca5d06304f47cdc",
+          "matchingbenchmark": "ibja",
+          "matchingpercent": 78,
+          "stamp": [{ "city": 3, "series": "02", "stampcharges": 100 }]
+        },
+        "cashback": true,
+        "mwebsavingamount": 148200,
+        "cashbackjumping": false,
+        "cashbackinterestrate": 16.53,
+        "appdisplaytext": {
+          "schemeheader": "Suitable for Business Community, Traders, Shop Owners, Property Dealers etc.",
+          "paymentinfo": "Rebate will be given to achieve effective interest rate"
+        },
+        "id": 60
+      },
+      "meta": {
+        "renewaltype": "1:1",
+        "ispartial": false,
+        "islocked": false,
+        "tenureextension": false
+      },
+      "timestamps": {
+        "created": "2020-06-16T08:05:34.168Z",
+        "pending": "2020-06-16T08:05:36.029Z"
+      },
+      "createdAt": "2020-06-16T08:05:34.170Z",
+      "updatedAt": "2020-06-16T08:08:16.938Z",
+      "processId": "2251799814439324",
+      "signingmethod": {
+        "id": "5e4fedfb2c2e86799472c5f1",
+        "name": "digital",
+        "description": "Digital Sign"
+      }
+    },
+    "response": {
+      "code": 200,
+      "message": "Order fetched successfully",
+      "order": {
+        "orderId": "7096-691351-7845",
+        "customerId": "5edf812a47e9ec4546c18681",
+        "type": {
+          "_id": "5ee75a6dc13eff67f7e90e33",
+          "archived": false,
+          "name": "renewal",
+          "description": "renewal order",
+          "createdAt": "2020-06-15T11:24:29.658Z",
+          "updatedAt": "2020-06-15T11:24:29.658Z"
+        },
+        "status": "pending",
+        "amount": 198058,
+        "signingmethod": {
+          "id": "5e4fedfb2c2e86799472c5f1",
+          "name": "digital",
+          "description": "Digital Sign"
+        },
+        "paymentmethod": { "name": "razorpay" },
+        "signingstatus": "success",
+        "paymentstatus": "success",
+        "loanstatus": "pending",
+        "payment": {
+          "_id": "5ee87dddabb6346fcc114d5f",
+          "status": "success",
+          "retry": false,
+          "orderId": "5ee87d4eabb6346fcc114d5d",
+          "requestId": "RPK1592294877655",
+          "createdAt": "2020-06-16T08:07:57.891Z",
+          "updatedAt": "2020-06-16T08:08:16.926Z",
+          "meta": {
+            "pgresponse": {
+              "payment": {
+                "entity": {
+                  "id": "pay_F3Dxcrf7IdU7io",
+                  "entity": "payment",
+                  "amount": 19805800,
+                  "currency": "INR",
+                  "status": "captured",
+                  "order_id": null,
+                  "invoice_id": null,
+                  "international": false,
+                  "method": "netbanking",
+                  "amount_refunded": 0,
+                  "refund_status": null,
+                  "captured": true,
+                  "description": "Payment for RPK1592294877655 with amount 198058",
+                  "card_id": null,
+                  "bank": "HDFC",
+                  "wallet": null,
+                  "vpa": null,
+                  "email": "void@razorpay.com",
+                  "contact": "+91911111111111",
+                  "notes": { "order_id": "RPK1592294877655" },
+                  "fee": 2950,
+                  "tax": 450,
+                  "error_code": null,
+                  "error_description": null,
+                  "error_source": null,
+                  "error_step": null,
+                  "error_reason": null,
+                  "created_at": 1592294886
+                }
+              }
+            },
+            "loandata": [
+              {
+                "createdAt": "2020-06-16T08:07:57.856Z",
+                "updatedAt": "2020-06-16T08:07:57.856Z",
+                "id": 21384,
+                "paidamount": 193582,
+                "cashback": 34,
+                "scheme": "18.96",
+                "utrnumber": null,
+                "status": "PENDING",
+                "updatedby": null,
+                "verificationstatus": null,
+                "subtype": "partial",
+                "repledgeverified": null,
+                "request": 17250,
+                "loan": {
+                  "createdAt": "2020-03-20",
+                  "updatedAt": "2020-06-16T08:08:16.601Z",
+                  "id": 20385,
+                  "loanid": "526511527978221",
+                  "referencenumber": "IBNHQ",
+                  "isurecode": "TDATA",
+                  "coreid": "24855",
+                  "loanamount": 230064,
+                  "balanceamount": 225064,
+                  "loanstartedon": "2020-03-20T00:00:00.000Z",
+                  "dayselapsed": 6,
+                  "scheme": "19.76",
+                  "interest": 2000,
+                  "closingamount": 232064,
+                  "renewalamount": 238065,
+                  "preclosurecharges": 0,
+                  "preclosure": 0,
+                  "othercharges": 0,
+                  "netweight": 220,
+                  "statuscode": 1,
+                  "fetchedon": "2020-12-12T00:00:00.000Z",
+                  "lenderid": "federal",
+                  "razorpayvan": "2223331100024855",
+                  "repledged": false,
+                  "schemeid": "14",
+                  "recovery": 0,
+                  "ref_no": "NQRk",
+                  "loan_count": 1,
+                  "ltv": 68,
+                  "reconrecovery": 0,
+                  "hardrecovery": 0,
+                  "recoverytype": "0,0",
+                  "repledgeverifytype": "OTP",
+                  "schemename": null,
+                  "expirydate": null,
+                  "loanof": 2882,
+                  "branch": 16,
+                  "repledgerequest": 17250
+                }
+              },
+              {
+                "createdAt": "2020-06-16T08:07:57.856Z",
+                "updatedAt": "2020-06-16T08:07:57.856Z",
+                "id": 21385,
+                "paidamount": 4476,
+                "cashback": 1,
+                "scheme": "18.96",
+                "utrnumber": null,
+                "status": "PENDING",
+                "updatedby": null,
+                "verificationstatus": null,
+                "subtype": "partial",
+                "repledgeverified": null,
+                "request": 17250,
+                "loan": {
+                  "createdAt": "2020-03-20",
+                  "updatedAt": "2020-06-16T08:08:16.635Z",
+                  "id": 20386,
+                  "loanid": "1045785773381",
+                  "referencenumber": "IBNHQ",
+                  "isurecode": "TDATA",
+                  "coreid": "41101",
+                  "loanamount": 10000,
+                  "balanceamount": 9500,
+                  "loanstartedon": "2020-03-20T00:00:00.000Z",
+                  "dayselapsed": 6,
+                  "scheme": "19.76",
+                  "interest": 172,
+                  "closingamount": 10172,
+                  "renewalamount": 10907,
+                  "preclosurecharges": 0,
+                  "preclosure": 0,
+                  "othercharges": 0,
+                  "netweight": 0,
+                  "statuscode": 1,
+                  "fetchedon": "2020-12-12T00:00:00.000Z",
+                  "lenderid": "rupeek",
+                  "razorpayvan": null,
+                  "repledged": false,
+                  "schemeid": "14",
+                  "recovery": 0,
+                  "ref_no": "24855",
+                  "loan_count": 2,
+                  "ltv": null,
+                  "reconrecovery": 0,
+                  "hardrecovery": 0,
+                  "recoverytype": "0,0",
+                  "repledgeverifytype": null,
+                  "schemename": null,
+                  "expirydate": null,
+                  "loanof": 2882,
+                  "branch": 13,
+                  "repledgerequest": 17250
+                }
+              }
+            ]
+          }
+        },
+        "processId": "2251799814439324",
+        "bankAccount": { "verificationLock": false }
+      }
+    }
+  }
+}

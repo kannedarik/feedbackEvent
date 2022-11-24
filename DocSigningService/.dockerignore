@@ -1,0 +1,9 @@
+npm-debug.log
+sonar-project.properties
+Dockerfile
+.dockerignore
+
+.gitignore
+.env
+.eslintrc
+.editorconfig

@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1xho8xd" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.11.1">
+  <bpmn:process id="send-daily-email-to-lender" name="Send daily email to lender" isExecutable="true">
+    <bpmn:serviceTask id="Activity_1o8ohmo" name="Select orders for sending email">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="renewal.automation.email.selectOrders" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1pr538w</bpmn:incoming>
+      <bpmn:outgoing>Flow_1eta519</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:startEvent id="StartEvent_1" name="Start">
+      <bpmn:outgoing>Flow_1i0jilm</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:subProcess id="Activity_1f46jsu" name="Daily Email To Branch">
+      <bpmn:incoming>Flow_1eta519</bpmn:incoming>
+      <bpmn:outgoing>Flow_0e64saw</bpmn:outgoing>
+      <bpmn:multiInstanceLoopCharacteristics>
+        <bpmn:extensionElements>
+          <zeebe:loopCharacteristics inputCollection="= branchIDs" inputElement="branchID" />
+        </bpmn:extensionElements>
+      </bpmn:multiInstanceLoopCharacteristics>
+      <bpmn:startEvent id="Event_13wcxwx">
+        <bpmn:outgoing>Flow_0d544x5</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:serviceTask id="Activity_1rahs8a" name="Send email to branch">
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="renewal.automation.email.send" />
+          <zeebe:taskHeaders>
+            <zeebe:header key="category" value="transactional" />
+            <zeebe:header key="provider" value="ses" />
+            <zeebe:header key="type" value="email" />
+            <zeebe:header key="template" value="DailyLenderEmailV3" />
+          </zeebe:taskHeaders>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_0d544x5</bpmn:incoming>
+        <bpmn:outgoing>Flow_1y828fi</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:sequenceFlow id="Flow_0d544x5" sourceRef="Event_13wcxwx" targetRef="Activity_1rahs8a" />
+      <bpmn:endEvent id="Event_044xn8n">
+        <bpmn:incoming>Flow_1fhtp55</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:serviceTask id="Activity_0ws0j8e" name="Notify renewal automation flow of email sent">
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="renewal.automation.email.notifyCompletion" />
+          <zeebe:taskHeaders>
+            <zeebe:header key="automatedLenderEmailSent" value="true" />
+          </zeebe:taskHeaders>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_09xj22f</bpmn:incoming>
+        <bpmn:outgoing>Flow_0k214t9</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:sequenceFlow id="Flow_1y828fi" sourceRef="Activity_1rahs8a" targetRef="Activity_08p7hbx" />
+      <bpmn:sequenceFlow id="Flow_0k214t9" sourceRef="Activity_0ws0j8e" targetRef="Gateway_1mc4t2w" />
+      <bpmn:boundaryEvent id="Event_0d9awu0" attachedToRef="Activity_1rahs8a">
+        <bpmn:outgoing>Flow_09yb51e</bpmn:outgoing>
+        <bpmn:errorEventDefinition id="ErrorEventDefinition_0ccp3o6" errorRef="Error_141qksy" />
+      </bpmn:boundaryEvent>
+      <bpmn:sequenceFlow id="Flow_09yb51e" sourceRef="Event_0d9awu0" targetRef="Activity_0f9msg3" />
+      <bpmn:exclusiveGateway id="Gateway_1mc4t2w">
+        <bpmn:incoming>Flow_0k214t9</bpmn:incoming>
+        <bpmn:incoming>Flow_0ixac79</bpmn:incoming>
+        <bpmn:incoming>Flow_0pfuf39</bpmn:incoming>
+        <bpmn:outgoing>Flow_1fhtp55</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:sequenceFlow id="Flow_1fhtp55" sourceRef="Gateway_1mc4t2w" targetRef="Event_044xn8n" />
+      <bpmn:serviceTask id="Activity_0f9msg3" name="Notify renewal automation flow of email sending failure">
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="renewal.automation.email.notifyCompletion" />
+          <zeebe:taskHeaders>
+            <zeebe:header key="automatedLenderEmailSent" value="false" />
+          </zeebe:taskHeaders>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_09yb51e</bpmn:incoming>
+        <bpmn:outgoing>Flow_0ixac79</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:sequenceFlow id="Flow_0ixac79" sourceRef="Activity_0f9msg3" targetRef="Gateway_1mc4t2w" />
+      <bpmn:sequenceFlow id="Flow_1jiucs7" sourceRef="Activity_08p7hbx" targetRef="Gateway_0et69c1" />
+      <bpmn:exclusiveGateway id="Gateway_0et69c1">
+        <bpmn:incoming>Flow_1jiucs7</bpmn:incoming>
+        <bpmn:outgoing>Flow_09xj22f</bpmn:outgoing>
+        <bpmn:outgoing>Flow_0ls4gn9</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:sequenceFlow id="Flow_09xj22f" name="Notification succeeded" sourceRef="Gateway_0et69c1" targetRef="Activity_0ws0j8e">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">= emailNotificationSucceeded = true</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:exclusiveGateway id="Gateway_0f287io" name="Retries exhausted?">
+        <bpmn:incoming>Flow_0ls4gn9</bpmn:incoming>
+        <bpmn:outgoing>Flow_1y6d7f8</bpmn:outgoing>
+        <bpmn:outgoing>Flow_1o4ra7z</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:sequenceFlow id="Flow_0ls4gn9" name="Notification not succeeded" sourceRef="Gateway_0et69c1" targetRef="Gateway_0f287io">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">= emailNotificationSucceeded = false</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:intermediateCatchEvent id="Event_0o3p2ix" name="Wait for 1 minute">
+        <bpmn:incoming>Flow_1y6d7f8</bpmn:incoming>
+        <bpmn:outgoing>Flow_0cb0inz</bpmn:outgoing>
+        <bpmn:timerEventDefinition id="TimerEventDefinition_19d55ic">
+          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT1M</bpmn:timeDuration>
+        </bpmn:timerEventDefinition>
+      </bpmn:intermediateCatchEvent>
+      <bpmn:sequenceFlow id="Flow_1y6d7f8" name="No" sourceRef="Gateway_0f287io" targetRef="Event_0o3p2ix">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=retryCount &lt; maxRetryCount</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="Flow_0cb0inz" sourceRef="Event_0o3p2ix" targetRef="Activity_08p7hbx" />
+      <bpmn:serviceTask id="Activity_0ctdw49" name="Notify renewal automation flow of email sending failure">
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="renewal.automation.email.notifyCompletion" />
+          <zeebe:taskHeaders>
+            <zeebe:header key="automatedLenderEmailSent" value="false" />
+          </zeebe:taskHeaders>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1o4ra7z</bpmn:incoming>
+        <bpmn:outgoing>Flow_0pfuf39</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:sequenceFlow id="Flow_1o4ra7z" name="Yes" sourceRef="Gateway_0f287io" targetRef="Activity_0ctdw49">
+        <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">= retryCount &gt;= maxRetryCount</bpmn:conditionExpression>
+      </bpmn:sequenceFlow>
+      <bpmn:sequenceFlow id="Flow_0pfuf39" sourceRef="Activity_0ctdw49" targetRef="Gateway_1mc4t2w" />
+      <bpmn:serviceTask id="Activity_08p7hbx" name="Check the notification status">
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="renewal.automation.email.checkNotificationStatus" />
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1y828fi</bpmn:incoming>
+        <bpmn:incoming>Flow_0cb0inz</bpmn:incoming>
+        <bpmn:outgoing>Flow_1jiucs7</bpmn:outgoing>
+      </bpmn:serviceTask>
+    </bpmn:subProcess>
+    <bpmn:subProcess id="Activity_0ffjn43" name="Daily Email To Branch V2">
+      <bpmn:incoming>Flow_16zmjd3</bpmn:incoming>
+      <bpmn:outgoing>Flow_1201osm</bpmn:outgoing>
+      <bpmn:multiInstanceLoopCharacteristics>
+        <bpmn:extensionElements>
+          <zeebe:loopCharacteristics inputCollection="= branchIDsV2" inputElement="branchID" />
+        </bpmn:extensionElements>
+      </bpmn:multiInstanceLoopCharacteristics>
+      <bpmn:startEvent id="Event_1o9djuv">
+        <bpmn:outgoing>Flow_1fk2z4u</bpmn:outgoing>
+      </bpmn:startEvent>
+      <bpmn:serviceTask id="Activity_1l3o8x6" name="Send email to branch v2">
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="renewal.automation.email.v2.send" />
+          <zeebe:taskHeaders>
+            <zeebe:header key="category" value="transactional" />
+            <zeebe:header key="provider" value="ses" />
+            <zeebe:header key="type" value="email" />
+            <zeebe:header key="template" value="DailyLenderEmailV3" />
+          </zeebe:taskHeaders>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1fk2z4u</bpmn:incoming>
+        <bpmn:outgoing>Flow_0hvrh3h</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:endEvent id="Event_0rlu8c1">
+        <bpmn:incoming>Flow_0vs9g7h</bpmn:incoming>
+      </bpmn:endEvent>
+      <bpmn:serviceTask id="Activity_1i82gjz" name="Notify renewal automation flow of email sent v2">
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="renewal.automation.email.v2.notifyCompletion" />
+          <zeebe:taskHeaders>
+            <zeebe:header key="automatedLenderEmailSent" value="true" />
+          </zeebe:taskHeaders>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_0q9zkd6</bpmn:incoming>
+        <bpmn:outgoing>Flow_0k0e204</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:exclusiveGateway id="Gateway_0l0c74a">
+        <bpmn:incoming>Flow_1loy60s</bpmn:incoming>
+        <bpmn:incoming>Flow_0k0e204</bpmn:incoming>
+        <bpmn:outgoing>Flow_0vs9g7h</bpmn:outgoing>
+      </bpmn:exclusiveGateway>
+      <bpmn:serviceTask id="Activity_0859nsv" name="Notify renewal automation flow of email sending failure v2">
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="renewal.automation.email.v2.notifyCompletion" />
+          <zeebe:taskHeaders>
+            <zeebe:header key="automatedLenderEmailSent" value="false" />
+          </zeebe:taskHeaders>
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_0jmrkwi</bpmn:incoming>
+        <bpmn:incoming>Flow_0xn0zvu</bpmn:incoming>
+        <bpmn:outgoing>Flow_1loy60s</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:serviceTask id="Activity_1r8ppry" name="Check the notification status v2">
+        <bpmn:extensionElements>
+          <zeebe:taskDefinition type="renewal.automation.email.v2.checkNotificationStatus" />
+        </bpmn:extensionElements>
+        <bpmn:incoming>Flow_1eiy491</bpmn:incoming>
+        <bpmn:outgoing>Flow_0q9zkd6</bpmn:outgoing>
+      </bpmn:serviceTask>
+      <bpmn:intermediateCatchEvent id="Event_0c71cmr" name="Wait for 3 minute">
+        <bpmn:incoming>Flow_1edtevj</bpmn:incoming>
+        <bpmn:incoming>Flow_0hvrh3h</bpmn:incoming>
+        <bpmn:outgoing>Flow_1eiy491</bpmn:outgoing>
+        <bpmn:timerEventDefinition id="TimerEventDefinition_04ghwup">
+          <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT1M</bpmn:timeDuration>
+        </bpmn:timerEventDefinition>
+      </bpmn:intermediateCatchEvent>
+      <bpmn:boundaryEvent id="Event_1neffxl" attachedToRef="Activity_1l3o8x6">
+        <bpmn:outgoing>Flow_0xn0zvu</bpmn:outgoing>
+        <bpmn:errorEventDefinition id="ErrorEventDefinition_07ut49g" errorRef="Error_141qksy" />
+      </bpmn:boundaryEvent>
+      <bpmn:boundaryEvent id="Event_0hyowhf" attachedToRef="Activity_1r8ppry">
+        <bpmn:outgoing>Flow_0jmrkwi</bpmn:outgoing>
+        <bpmn:errorEventDefinition id="ErrorEventDefinition_065k441" errorRef="Error_141qksy" />
+      </bpmn:boundaryEvent>
+      <bpmn:boundaryEvent id="Event_00gs6b3" attachedToRef="Activity_1r8ppry">
+        <bpmn:outgoing>Flow_1edtevj</bpmn:outgoing>
+        <bpmn:errorEventDefinition id="ErrorEventDefinition_0c0ya90" errorRef="Error_0fjj9dl" />
+      </bpmn:boundaryEvent>
+      <bpmn:sequenceFlow id="Flow_1edtevj" sourceRef="Event_00gs6b3" targetRef="Event_0c71cmr" />
+      <bpmn:sequenceFlow id="Flow_1eiy491" sourceRef="Event_0c71cmr" targetRef="Activity_1r8ppry" />
+      <bpmn:sequenceFlow id="Flow_0hvrh3h" sourceRef="Activity_1l3o8x6" targetRef="Event_0c71cmr" />
+      <bpmn:sequenceFlow id="Flow_0jmrkwi" sourceRef="Event_0hyowhf" targetRef="Activity_0859nsv" />
+      <bpmn:sequenceFlow id="Flow_0xn0zvu" sourceRef="Event_1neffxl" targetRef="Activity_0859nsv" />
+      <bpmn:sequenceFlow id="Flow_0q9zkd6" sourceRef="Activity_1r8ppry" targetRef="Activity_1i82gjz" />
+      <bpmn:sequenceFlow id="Flow_1loy60s" sourceRef="Activity_0859nsv" targetRef="Gateway_0l0c74a" />
+      <bpmn:sequenceFlow id="Flow_0vs9g7h" sourceRef="Gateway_0l0c74a" targetRef="Event_0rlu8c1" />
+      <bpmn:sequenceFlow id="Flow_0k0e204" sourceRef="Activity_1i82gjz" targetRef="Gateway_0l0c74a" />
+      <bpmn:sequenceFlow id="Flow_1fk2z4u" sourceRef="Event_1o9djuv" targetRef="Activity_1l3o8x6" />
+    </bpmn:subProcess>
+    <bpmn:parallelGateway id="Gateway_0g5blxc">
+      <bpmn:incoming>Flow_1i0jilm</bpmn:incoming>
+      <bpmn:outgoing>Flow_1pr538w</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0vq0wdz</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:sequenceFlow id="Flow_1pr538w" sourceRef="Gateway_0g5blxc" targetRef="Activity_1o8ohmo" />
+    <bpmn:sequenceFlow id="Flow_1eta519" sourceRef="Activity_1o8ohmo" targetRef="Activity_1f46jsu" />
+    <bpmn:sequenceFlow id="Flow_1i0jilm" sourceRef="StartEvent_1" targetRef="Gateway_0g5blxc" />
+    <bpmn:serviceTask id="Activity_0tm2i2a" name="Select orders for sending email v2">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="renewal.automation.email.v2.selectOrders" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0vq0wdz</bpmn:incoming>
+      <bpmn:outgoing>Flow_16zmjd3</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0vq0wdz" sourceRef="Gateway_0g5blxc" targetRef="Activity_0tm2i2a" />
+    <bpmn:sequenceFlow id="Flow_16zmjd3" sourceRef="Activity_0tm2i2a" targetRef="Activity_0ffjn43" />
+    <bpmn:parallelGateway id="Gateway_0sxx00u">
+      <bpmn:incoming>Flow_1201osm</bpmn:incoming>
+      <bpmn:incoming>Flow_0e64saw</bpmn:incoming>
+      <bpmn:outgoing>Flow_0f48pl9</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:endEvent id="Event_0co7kuc" name="End">
+      <bpmn:incoming>Flow_0f48pl9</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1201osm" sourceRef="Activity_0ffjn43" targetRef="Gateway_0sxx00u" />
+    <bpmn:sequenceFlow id="Flow_0f48pl9" sourceRef="Gateway_0sxx00u" targetRef="Event_0co7kuc" />
+    <bpmn:sequenceFlow id="Flow_0e64saw" sourceRef="Activity_1f46jsu" targetRef="Gateway_0sxx00u" />
+  </bpmn:process>
+  <bpmn:error id="Error_141qksy" name="Email sending failure" errorCode="email_sending_failure" />
+  <bpmn:error id="Error_0fjj9dl" name="Email retry Event" errorCode="email_retry_event" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="send-daily-email-to-lender">
+      <bpmndi:BPMNEdge id="Flow_0e64saw_di" bpmnElement="Flow_0e64saw">
+        <di:waypoint x="1820" y="360" />
+        <di:waypoint x="2340" y="360" />
+        <di:waypoint x="2340" y="775" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0f48pl9_di" bpmnElement="Flow_0f48pl9">
+        <di:waypoint x="2365" y="800" />
+        <di:waypoint x="2492" y="800" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1201osm_di" bpmnElement="Flow_1201osm">
+        <di:waypoint x="1810" y="1275" />
+        <di:waypoint x="2340" y="1275" />
+        <di:waypoint x="2340" y="825" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_16zmjd3_di" bpmnElement="Flow_16zmjd3">
+        <di:waypoint x="680" y="1300" />
+        <di:waypoint x="840" y="1300" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0vq0wdz_di" bpmnElement="Flow_0vq0wdz">
+        <di:waypoint x="430" y="875" />
+        <di:waypoint x="430" y="1300" />
+        <di:waypoint x="580" y="1300" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1i0jilm_di" bpmnElement="Flow_1i0jilm">
+        <di:waypoint x="188" y="850" />
+        <di:waypoint x="405" y="850" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1eta519_di" bpmnElement="Flow_1eta519">
+        <di:waypoint x="700" y="410" />
+        <di:waypoint x="850" y="410" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1pr538w_di" bpmnElement="Flow_1pr538w">
+        <di:waypoint x="430" y="825" />
+        <di:waypoint x="430" y="410" />
+        <di:waypoint x="600" y="410" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Activity_1mouddh_di" bpmnElement="Activity_1o8ohmo">
+        <dc:Bounds x="600" y="370" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="152" y="832" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="158" y="875" width="24" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1f46jsu_di" bpmnElement="Activity_1f46jsu" isExpanded="true">
+        <dc:Bounds x="850" y="80" width="970" height="690" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0pfuf39_di" bpmnElement="Flow_0pfuf39">
+        <di:waypoint x="1600" y="190" />
+        <di:waypoint x="1670" y="190" />
+        <di:waypoint x="1670" y="332" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1o4ra7z_di" bpmnElement="Flow_1o4ra7z">
+        <di:waypoint x="1385" y="190" />
+        <di:waypoint x="1500" y="190" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1434" y="172" width="18" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0cb0inz_di" bpmnElement="Flow_0cb0inz">
+        <di:waypoint x="1220" y="208" />
+        <di:waypoint x="1220" y="317" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1y6d7f8_di" bpmnElement="Flow_1y6d7f8">
+        <di:waypoint x="1335" y="190" />
+        <di:waypoint x="1238" y="190" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1279" y="172" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ls4gn9_di" bpmnElement="Flow_0ls4gn9">
+        <di:waypoint x="1360" y="332" />
+        <di:waypoint x="1360" y="215" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1373" y="271" width="73" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_09xj22f_di" bpmnElement="Flow_09xj22f">
+        <di:waypoint x="1385" y="357" />
+        <di:waypoint x="1500" y="357" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1416" y="326" width="55" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1jiucs7_di" bpmnElement="Flow_1jiucs7">
+        <di:waypoint x="1270" y="357" />
+        <di:waypoint x="1335" y="357" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ixac79_di" bpmnElement="Flow_0ixac79">
+        <di:waypoint x="1410" y="620" />
+        <di:waypoint x="1670" y="620" />
+        <di:waypoint x="1670" y="382" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1fhtp55_di" bpmnElement="Flow_1fhtp55">
+        <di:waypoint x="1695" y="357" />
+        <di:waypoint x="1752" y="357" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_09yb51e_di" bpmnElement="Flow_09yb51e">
+        <di:waypoint x="1075" y="415" />
+        <di:waypoint x="1075" y="620" />
+        <di:waypoint x="1310" y="620" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0k214t9_di" bpmnElement="Flow_0k214t9">
+        <di:waypoint x="1600" y="357" />
+        <di:waypoint x="1645" y="357" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1y828fi_di" bpmnElement="Flow_1y828fi">
+        <di:waypoint x="1075" y="357" />
+        <di:waypoint x="1170" y="357" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0d544x5_di" bpmnElement="Flow_0d544x5">
+        <di:waypoint x="926" y="357" />
+        <di:waypoint x="975" y="357" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_13wcxwx_di" bpmnElement="Event_13wcxwx">
+        <dc:Bounds x="890" y="339" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1k3693o_di" bpmnElement="Activity_1rahs8a">
+        <dc:Bounds x="975" y="317" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_044xn8n_di" bpmnElement="Event_044xn8n">
+        <dc:Bounds x="1752" y="339" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1yphrqk_di" bpmnElement="Activity_0ws0j8e">
+        <dc:Bounds x="1500" y="317" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1mc4t2w_di" bpmnElement="Gateway_1mc4t2w" isMarkerVisible="true">
+        <dc:Bounds x="1645" y="332" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0f9msg3_di" bpmnElement="Activity_0f9msg3">
+        <dc:Bounds x="1310" y="580" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0et69c1_di" bpmnElement="Gateway_0et69c1" isMarkerVisible="true">
+        <dc:Bounds x="1335" y="332" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0f287io_di" bpmnElement="Gateway_0f287io" isMarkerVisible="true">
+        <dc:Bounds x="1335" y="165" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1331" y="128" width="57" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0yrlv46_di" bpmnElement="Event_0o3p2ix">
+        <dc:Bounds x="1202" y="172" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1178" y="148" width="83" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ctdw49_di" bpmnElement="Activity_0ctdw49">
+        <dc:Bounds x="1500" y="150" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1mldypq_di" bpmnElement="Activity_08p7hbx">
+        <dc:Bounds x="1170" y="317" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0psq7mt_di" bpmnElement="Event_0d9awu0">
+        <dc:Bounds x="1057" y="379" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ffjn43_di" bpmnElement="Activity_0ffjn43" isExpanded="true">
+        <dc:Bounds x="840" y="930" width="970" height="690" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1fk2z4u_di" bpmnElement="Flow_1fk2z4u">
+        <di:waypoint x="916" y="1207" />
+        <di:waypoint x="965" y="1207" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0k0e204_di" bpmnElement="Flow_0k0e204">
+        <di:waypoint x="1590" y="1207" />
+        <di:waypoint x="1635" y="1207" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0vs9g7h_di" bpmnElement="Flow_0vs9g7h">
+        <di:waypoint x="1685" y="1207" />
+        <di:waypoint x="1742" y="1207" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1loy60s_di" bpmnElement="Flow_1loy60s">
+        <di:waypoint x="1400" y="1430" />
+        <di:waypoint x="1660" y="1430" />
+        <di:waypoint x="1660" y="1232" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0q9zkd6_di" bpmnElement="Flow_0q9zkd6">
+        <di:waypoint x="1310" y="1207" />
+        <di:waypoint x="1490" y="1207" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0xn0zvu_di" bpmnElement="Flow_0xn0zvu">
+        <di:waypoint x="1010" y="1265" />
+        <di:waypoint x="1010" y="1430" />
+        <di:waypoint x="1300" y="1430" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0jmrkwi_di" bpmnElement="Flow_0jmrkwi">
+        <di:waypoint x="1260" y="1265" />
+        <di:waypoint x="1260" y="1410" />
+        <di:waypoint x="1300" y="1410" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0hvrh3h_di" bpmnElement="Flow_0hvrh3h">
+        <di:waypoint x="1065" y="1207" />
+        <di:waypoint x="1112" y="1207" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1eiy491_di" bpmnElement="Flow_1eiy491">
+        <di:waypoint x="1148" y="1207" />
+        <di:waypoint x="1210" y="1207" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1edtevj_di" bpmnElement="Flow_1edtevj">
+        <di:waypoint x="1260" y="1149" />
+        <di:waypoint x="1260" y="1129" />
+        <di:waypoint x="1130" y="1129" />
+        <di:waypoint x="1130" y="1189" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_1o9djuv_di" bpmnElement="Event_1o9djuv">
+        <dc:Bounds x="880" y="1189" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1l3o8x6_di" bpmnElement="Activity_1l3o8x6">
+        <dc:Bounds x="965" y="1167" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0rlu8c1_di" bpmnElement="Event_0rlu8c1">
+        <dc:Bounds x="1742" y="1189" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1i82gjz_di" bpmnElement="Activity_1i82gjz">
+        <dc:Bounds x="1490" y="1167" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0l0c74a_di" bpmnElement="Gateway_0l0c74a" isMarkerVisible="true">
+        <dc:Bounds x="1635" y="1182" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0859nsv_di" bpmnElement="Activity_0859nsv">
+        <dc:Bounds x="1300" y="1390" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1r8ppry_di" bpmnElement="Activity_1r8ppry">
+        <dc:Bounds x="1210" y="1167" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0c71cmr_di" bpmnElement="Event_0c71cmr">
+        <dc:Bounds x="1112" y="1189" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1088" y="1235" width="83" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_00gs6b3_di" bpmnElement="Event_00gs6b3">
+        <dc:Bounds x="1242" y="1149" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0hyowhf_di" bpmnElement="Event_0hyowhf">
+        <dc:Bounds x="1242" y="1229" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1neffxl_di" bpmnElement="Event_1neffxl">
+        <dc:Bounds x="992" y="1229" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1s11z40_di" bpmnElement="Gateway_0g5blxc">
+        <dc:Bounds x="405" y="825" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0tm2i2a_di" bpmnElement="Activity_0tm2i2a">
+        <dc:Bounds x="580" y="1260" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0k8e19u_di" bpmnElement="Gateway_0sxx00u">
+        <dc:Bounds x="2315" y="775" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0aelp23_di" bpmnElement="Event_0co7kuc">
+        <dc:Bounds x="2492" y="782" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2500" y="758" width="20" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

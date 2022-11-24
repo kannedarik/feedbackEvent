@@ -1,0 +1,355 @@
+@import '_normalize.scss';
+@import 'mixins.scss';
+
+html {
+  font-size: $base-font-size+px;
+}
+
+body {
+  font-size: 1rem;
+  color: $primary-color;
+  font-weight: $normal-font-weight;
+  background-color: $body-background-color;
+  line-height: 1.42857143;
+}
+
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.pointer-events-none {
+  pointer-events: none;
+}
+
+/* Reset Padding and Margin to 0px Starts Here*/
+
+.no-margin {
+  margin: 0;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.opacity-0 {
+  opacity: 0;
+}
+
+/* Reset Padding and Margin to 0px Ends Here*/
+
+/* Display Classes Starts Here */
+
+.display-inline-block {
+  display: inline-block;
+}
+
+.display-inline {
+  display: inline;
+}
+
+.display-none {
+  display: none;
+}
+
+/* Display Classes Ends Here */
+
+/* Font Weights Starts Here */
+.bold-font {
+  font-weight: $bold-font-weight;
+}
+
+.normal-font {
+  font-weight: $normal-font-weight;
+}
+
+.medium-font-weight {
+  font-weight: $medium-bold-weight;
+}
+
+.light-font-weight {
+  font-weight: $light-weight;
+}
+
+/* Font Weights Ends Here */
+
+/* Background Color as white */
+
+.white-background {
+  background-color: $white-color;
+}
+
+.white-color {
+  color: $white-color;
+}
+
+.theme-color {
+  color: $theme-color;
+}
+
+.theme-secondary-color {
+  color: $theme-color;
+}
+
+
+.theme-gradient-title {
+  span {
+    @include text-gradient;
+  }
+}
+
+/* Background Color as white */
+small,
+.font-small {
+  font-size: 0.88rem;
+}
+
+.normal-font-size {
+  font-size: 1rem;
+}
+
+.mandatory-star {
+  font-size: 6px;
+}
+
+.block {
+  float: left;
+  width: 100%;
+}
+
+ul,
+li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+/* Flex Classes Starts Here */
+
+.display-flex {
+  display: flex;
+  -webkit-display: flex;
+}
+
+.flex-1 {
+  flex: 1;
+  -ms-flex: 1;
+  -webkit-flex: 1;
+}
+
+.flex-2 {
+  flex: 2;
+  -ms-flex: 2;
+  -webkit-flex: 2;
+}
+
+.flex-align-center {
+  align-items: center;
+  -webkit-align-items: center;
+}
+
+.flex-align-bottom {
+  align-items: flex-end;
+  -webkit-align-items: flex-end;
+}
+
+.flex-justify-content-space-between {
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+}
+
+@media(max-width:$mobile-devices-max-width+px) {
+  .flex-direction-column-mobile {
+    flex-direction: column;
+    -webkit-flex-direction: column;
+  }
+}
+
+/* Flex Classes Ends Here */
+/* Section Padding Starts Here */
+
+.section-padding-10px {
+  padding: 10px 0;
+}
+
+.section-padding-15px {
+  padding: 15px 0;
+}
+
+.section-padding-20px {
+  padding: 20px 0;
+}
+
+.section-padding-30px {
+  padding: 30px 0;
+}
+
+.section-padding-40px {
+  padding: 40px 0;
+}
+
+.section-padding-50px {
+  padding: 50px 0;
+}
+
+/* Section Padding Ends Here */
+
+.margin-bottom-50px {
+  margin-bottom: 50px;
+}
+
+.margin-bottom-20px {
+  margin-bottom: 20px;
+}
+
+.margin-auto {
+  margin: auto;
+}
+
+.transition {
+  transition: all 0.5s cubic-bezier(0.85, -0.03, 0.16, 0.99);
+  -webkit-transition: all 0.5s cubic-bezier(0.85, -0.03, 0.16, 0.99);
+  -ms-transition: all 0.5s cubic-bezier(0.85, -0.03, 0.16, 0.99);
+  -o-transition: all 0.5s cubic-bezier(0.85, -0.03, 0.16, 0.99);
+  -moz-transition: all 0.5s cubic-bezier(0.85, -0.03, 0.16, 0.99);
+}
+
+/* ==========
+ Text alignment CSS Starts Here
+========== */
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+.form-control:focus {
+  box-shadow:none;
+  border-color:$theme-color;
+}
+.border-right {
+  border-right: 1px solid $form-element-border;
+}
+.border-bottom {
+  border-bottom: 1px solid $form-element-border;
+}
+/* ==========
+ CTA button CSS 
+========== */
+.rupeek-btn {
+  background: -webkit-linear-gradient(to left, #f7911e, #f26522);
+  background: linear-gradient(to left, #f7911e, #f26522);
+  display: inline-block;
+  background-size: 200% auto;
+  border-radius: $base-border-radius;
+  color: $white-color;
+  border: none;
+  outline: none;
+  font-size: $base-font-size;
+  font-weight: $medium-bold-weight + 200;
+  @extend .text-uppercase;
+  @include padding(8px 50px);
+  &:hover {
+    background-position: right center;
+    color: $white-color;
+  }
+  &:focus {
+    box-shadow:none;
+  }
+}
+.van-payments {
+  .card-header {
+    padding: 1.25rem;
+    padding-bottom: 0px;
+    background-color: $body-background-color;
+    border: none;
+    .card-header-pills {
+      margin: 0px;
+    }
+  }
+  .card-body {
+    background-color: $body-background-color;
+  }
+  .nav-pills .nav-link {
+    color: $primary-color;
+    border-bottom: 1px solid $body-background-color;
+    font-weight: $medium-bold-weight;
+    margin-right: 5px;
+    @include justify-content(center);
+    @include display(flex);
+    @include align-items(center);
+    padding: 0.8em 1em;
+    border-radius: 0px;
+    &.active, &:hover{
+      color: $theme-color;
+      background-color: $white-color;
+      border-bottom: 3px solid $theme-color;
+    }
+    &:hover {
+      color: $white-color;
+      background-color: rgba(251, 122, 53, 0.6);
+    }
+  }
+}
+.table-federal,.table-rupeek {
+  text-transform: capitalize;
+}
+.table-kvb, .table-icici {
+  text-transform: uppercase;
+}
+#transferModal .close {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  opacity: 1;
+  &:hover {
+    opacity: 1;
+  }
+}
+select.form-control {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url('assets/img/down_arrow.png') no-repeat center right 14px;
+  background-size: 10px;
+  background-color: #fbfbfb;
+  border-radius: 4px;
+}
+#vanPaymentModal {
+  .modal-header {
+    background-color: #fe9411ba;
+    color: $white-color;
+    text-transform: capitalize;
+    button {
+      display: none;
+    }
+  }
+  .modal-content{
+    border: none;
+  }
+}

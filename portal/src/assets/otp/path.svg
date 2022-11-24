@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="10" height="16" viewBox="0 0 10 16">
+    <defs>
+        <style>
+            .cls-1{fill-rule:evenodd;opacity:.54}
+        </style>
+    </defs>
+    <path id="path" d="M8 0L0 8.108 1.867 10 8 3.784 14.133 10 16 8.108z" class="cls-1" transform="rotate(90 5 5)"/>
+</svg>

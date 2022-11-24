@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+    <defs>
+        <style>
+            .cls-1,.cls-2{fill:none}.cls-2{stroke:#1287e5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-width:2px}
+        </style>
+    </defs>
+    <g id="Group_7202" data-name="Group 7202" transform="rotate(180 8 8)">
+        <path id="Rectangle_1" d="M0 0h16v16H0z" class="cls-1" data-name="Rectangle 1"/>
+        <path id="Stroke_3" d="M4 8L0 4l4-4" class="cls-2" data-name="Stroke 3" transform="translate(6 4)"/>
+    </g>
+</svg>

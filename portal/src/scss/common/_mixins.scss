@@ -1,0 +1,178 @@
+@import 'variables.scss';
+@mixin transform($property) {
+    -webkit-transform: $property;
+        -ms-transform: $property;
+            transform: $property;
+}
+
+@mixin padding($property) {
+    padding : $property;
+}
+
+@mixin transition($duration) {
+    transition: all $duration cubic-bezier(0.85, -0.03, 0.16, 0.99);
+    -webkit-transition: all $duration cubic-bezier(0.85, -0.03, 0.16, 0.99);
+    -ms-transition: all $duration cubic-bezier(0.85, -0.03, 0.16, 0.99);
+    -o-transition: all $duration cubic-bezier(0.85, -0.03, 0.16, 0.99);
+    -moz-transition: all $duration cubic-bezier(0.85, -0.03, 0.16, 0.99);
+}
+
+@mixin button-box-shadow {
+    box-shadow: 2px 1px 3px rgba(0, 0, 0, .45);
+}
+
+@mixin justify-content($value) {
+    justify-content: $value;
+    -webkit-justify-content: $value
+}
+
+@mixin flex-direction($value) {
+    flex-direction: $value;
+    -webkit-flex-direction: $value
+}
+
+@mixin flex-wrap($value) {
+    flex-wrap: $value;
+    -webkit-flex-wrap: $value;
+}
+
+@mixin align-items($value) {
+    align-items: $value;
+    -webkit-align-items: $value;
+}
+
+@mixin font-awesome-unicode($unicode,$fontSize) {
+    content: $unicode;
+    font-family: 'Font Awesome\ 5 Free';
+    font-weight: 900;
+    font-size: $fontSize;
+}
+
+@mixin box-shadow($value:null,$color:null){
+    -moz-box-shadow: $value $color;
+        -webkit-box-shadow: $value $color;
+                box-shadow: $value $color;
+}
+@mixin animation-delay($value) {
+    -webkit-animation-delay: $value;
+       -moz-animation-delay: $value;
+            animation-delay: $value;
+}
+
+@mixin animation-duration($value) {
+    -webkit-animation-duration: $value;
+       -moz-animation-duration: $value;
+            animation-duration: $value;
+}
+@mixin animation-timing-function($value) {
+    -webkit-animation-timing-function: $value;
+       -moz-animation-timing-function: $value;
+            animation-timing-function: $value;
+}
+@mixin animation-fill-mode($value) {
+    -webkit-animation-fill-mode: $value;
+       -moz-animation-fill-mode: $value;
+            animation-fill-mode: $value;
+}
+@mixin animation-name($value) {
+    -webkit-animation-name: $value;
+       -moz-animation-name: $value;
+            animation-name: $value;
+}
+
+@mixin text-gradient{
+    background: -webkit-linear-gradient(90deg, #f26622, #f78f1e);
+    background: linear-gradient(90deg, #f26622, #f78f1e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@mixin display($value){
+    display: $value;
+    display: -webkit-$value;
+}
+@mixin inner-page-text{
+    font-size: 1rem;
+    line-height: 20px;
+}
+
+@mixin block {
+    float: left;
+    width:100%;
+}
+@mixin transform-origin($firstposition, $secondPosition) {
+    -webkit-transform-origin: $firstposition $secondPosition;
+       -moz-transform-origin: $firstposition $secondPosition;
+        -ms-transform-origin: $firstposition $secondPosition;
+         -o-transform-origin: $firstposition $secondPosition;
+            transform-origin: $firstposition $secondPosition;
+}
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        $browser: '-webkit-' !global;
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        $browser: '-moz-' !global;
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        $browser: '-o-' !global;
+        @content;
+    }
+    @keyframes #{$animationName} {
+        $browser: '' !global;
+        @content;
+    }
+} $browser: null;
+
+%public-background-image{
+    background-repeat: no-repeat;
+    background-image: url('~@/assets/sprites/public-sprite.svg');
+}
+
+%gradient-background{
+    background: -webkit-linear-gradient(90deg, #f26622, #f78f1e);
+    background: linear-gradient(90deg, #f26622, #f78f1e);
+}
+
+%tabs-similar-styles {
+    border: 1px solid $theme-color;
+    border-radius: $base-border-radius;
+    min-width: 200px;
+    padding: 10px 0px;
+    letter-spacing: 0.5px;
+}
+
+%tabs-active-styles {
+    @extend %gradient-background;
+    color: $white-color;
+    letter-spacing: 0.5px;
+}
+
+%triangle {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid white;
+    top: 0;
+    position: absolute;
+    z-index: 1;
+    @include transform(translateY(-100%));
+}
+
+.btn-proceed {
+    color: $white-color;
+    background-color: $theme-color;
+    border-radius: $base-border-radius;
+    // background: linear-gradient(260deg, #1287e5, #49a7f2);
+    @include box-shadow(2.1px 2.1px 10px 0 ,rgba(255, 109, 0, 0.32));
+    min-height: 40px;
+    font-size: 0.875rem;
+    &:disabled {
+        background-color: $theme-button-disabled;
+        color: $form-element-border;
+    }
+}

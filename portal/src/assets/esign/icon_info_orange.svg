@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="icon_info_Orange" width="16" height="16" viewBox="0 0 16 16">
+    <defs>
+        <style>
+            .cls-1{fill:#fca942}.cls-2,.cls-3{fill:#fff;stroke:#fff;stroke-width:2px}.cls-3{fill:none;stroke-linecap:round;stroke-linejoin:round}
+        </style>
+    </defs>
+    <circle id="Ellipse_267" cx="8" cy="8" r="8" class="cls-1" data-name="Ellipse 267"/>
+    <g id="Group_607" data-name="Group 607" transform="translate(6.711 3.137)">
+        <ellipse id="Ellipse_268" cx=".758" cy=".758" class="cls-2" data-name="Ellipse 268" rx=".758" ry=".758" transform="translate(.531)"/>
+        <path id="Path_996" d="M241.515 5389.3v-5.3H240" class="cls-3" data-name="Path 996" transform="translate(-240 -5379.894)"/>
+        <path id="Line_17" d="M0 0h2.577" class="cls-3" data-name="Line 17" transform="translate(0 9.409)"/>
+    </g>
+</svg>

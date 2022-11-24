@@ -1,0 +1,69 @@
+{
+  "createOrderType": {
+    "data": {
+          "name": "testing2",
+          "description": "why testing is necessary"
+      },
+    "response": {
+          "code": 201,
+          "message": "Order Type created successfully",
+          "type": {
+              "id": "5fb2907938c444170bd7c5c4",
+              "name": "testing2",
+              "description": "why testing is necessary"
+          }
+      }
+  },
+  "listOrderType": {
+    "data": {},
+    "response": {
+      "code": 200,
+      "message": "Order Type(s) fetched successfully",
+      "types": [
+          {
+              "id": "5f36346c225abe51c5d78424",
+              "name": "partrelease",
+              "description": "Partrelease order"
+          },
+          {
+              "id": "5e716aaced8f8a76149bc38c",
+              "name": "renewal",
+              "description": "Renewal Order"
+          }
+      ]
+    }
+  },
+  "readOrderType": {
+    "data": {},
+    "response": {
+        "code": 200,
+        "message": "Order Type fetched successfully",
+        "type": {
+            "id": "5e716aaced8f8a76149bc38c",
+            "name": "renewal",
+            "description": "Renewal Order"
+         }
+      }
+  },
+  "updateOrderType": {
+    "data": {
+      "name": "renewal",
+      "description": "Renewal Order"
+    },
+    "response": {
+      "code": 200,
+      "message": "Order Type updated successfully",
+      "type": {
+          "id": "5e716aaced8f8a76149bc38c",
+          "name": "renewal",
+          "description": "Renewal Order"
+       }
+    }
+  },
+  "deleteOrderType": {
+    "data": {},
+    "response": {
+      "code": 204
+    }
+  }
+}

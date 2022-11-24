@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+<rect width="32" height="32" rx="16" fill="#FBC441" fill-opacity="0.4"/>
+<path d="M16 6.74951V8.99951" stroke="#1E2D4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M10.75 8.07129L11.875 10.0198" stroke="#1E2D4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M21.25 8.07129L20.125 10.0198" stroke="#1E2D4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M6.58789 11.6621L8.53645 12.7871" stroke="#1E2D4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M25.4121 11.6621L23.4636 12.7871" stroke="#1E2D4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M19.2812 13.5H12.7188C12.4599 13.5 12.25 13.8358 12.25 14.25V18C12.25 18.4142 12.4599 18.75 12.7188 18.75H19.2812C19.5401 18.75 19.75 18.4142 19.75 18V14.25C19.75 13.8358 19.5401 13.5 19.2812 13.5Z" stroke="#1E2D4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.6591 18.75H8.84091C8.65263 18.75 8.5 19.0858 8.5 19.5V23.25C8.5 23.6642 8.65263 24 8.84091 24H15.6591C15.8474 24 16 23.6642 16 23.25V19.5C16 19.0858 15.8474 18.75 15.6591 18.75Z" stroke="#1E2D4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M23.1591 18.75H16.3409C16.1526 18.75 16 19.0858 16 19.5V23.25C16 23.6642 16.1526 24 16.3409 24H23.1591C23.3474 24 23.5 23.6642 23.5 23.25V19.5C23.5 19.0858 23.3474 18.75 23.1591 18.75Z" stroke="#1E2D4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M19.2812 13.5H12.7188C12.4599 13.5 12.25 13.8358 12.25 14.25V18C12.25 18.4142 12.4599 18.75 12.7188 18.75H19.2812C19.5401 18.75 19.75 18.4142 19.75 18V14.25C19.75 13.8358 19.5401 13.5 19.2812 13.5Z" fill="#FBC441" stroke="#1E2D4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.6591 18.75H8.84091C8.65263 18.75 8.5 19.0858 8.5 19.5V23.25C8.5 23.6642 8.65263 24 8.84091 24H15.6591C15.8474 24 16 23.6642 16 23.25V19.5C16 19.0858 15.8474 18.75 15.6591 18.75Z" fill="#FBC441" stroke="#1E2D4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M23.1591 18.75H16.3409C16.1526 18.75 16 19.0858 16 19.5V23.25C16 23.6642 16.1526 24 16.3409 24H23.1591C23.3474 24 23.5 23.6642 23.5 23.25V19.5C23.5 19.0858 23.3474 18.75 23.1591 18.75Z" fill="#FBC441" stroke="#1E2D4B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

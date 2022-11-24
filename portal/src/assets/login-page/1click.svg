@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 59.79 59.79">
+    <defs>
+        <style>
+            .cls-1{fill:#ffb000}.cls-2{fill:none;stroke:#421000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-width:2px}
+        </style>
+    </defs>
+    <g id="_1click" data-name="1click">
+        <g id="Group_9" data-name="Group 9">
+            <path id="Path_7" d="M53.811 59.79H5.979A5.981 5.981 0 0 1 0 53.811V5.979A5.981 5.981 0 0 1 5.979 0h47.832a5.981 5.981 0 0 1 5.979 5.979v47.832a5.981 5.981 0 0 1-5.979 5.979z" class="cls-1" data-name="Path 7"/>
+        </g>
+        <g id="Group_10" data-name="Group 10" transform="translate(13.563 7.911)">
+            <g id="Cursor_1_" transform="translate(4.541)">
+                <path id="Path_8" d="M28.746 42.879l-8.186 7.815V22.03l19.357 20.849z" class="cls-2" data-name="Path 8" transform="translate(-12.893 -11.071)"/>
+                <path id="Line_4" d="M0 0l4.375 4.714" class="cls-2" data-name="Line 4" transform="translate(0 4.83)"/>
+                <path id="Line_5" d="M.064 0L0 6.431" class="cls-2" data-name="Line 5" transform="translate(7.577)"/>
+                <path id="Path_9" d="M33.34 54.58l5.3 13.4z" class="cls-2" data-name="Path 9" transform="translate(-17.487 -22.771)"/>
+            </g>
+            <path id="Line_6" d="M6.431.07L0 0" class="cls-2" data-name="Line 6" transform="translate(0 12.383)"/>
+        </g>
+    </g>
+</svg>

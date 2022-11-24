@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="prefix__icon_info_Orange" width="16" height="16" viewBox="0 0 16 16">
+    <defs>
+        <style>
+            .prefix__cls-3{stroke:#fff;stroke-width:2px;fill:none;stroke-linecap:round;stroke-linejoin:round}
+        </style>
+    </defs>
+    <circle id="prefix__Ellipse_267" cx="8" cy="8" r="8" data-name="Ellipse 267" style="fill:#b3b3b3"/>
+    <g id="prefix__Group_607" data-name="Group 607" transform="translate(6.711 3.137)">
+        <circle id="prefix__Ellipse_268" cx=".758" cy=".758" r=".758" data-name="Ellipse 268" transform="translate(.531)" style="stroke:#fff;stroke-width:2px;fill:#fff"/>
+        <path id="prefix__Path_996" d="M241.515 5389.3v-5.3H240" class="prefix__cls-3" data-name="Path 996" transform="translate(-240 -5379.894)"/>
+        <path id="prefix__Line_17" d="M0 0L2.577 0" class="prefix__cls-3" data-name="Line 17" transform="translate(0 9.409)"/>
+    </g>
+</svg>

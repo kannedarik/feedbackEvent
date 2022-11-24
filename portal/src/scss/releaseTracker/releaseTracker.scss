@@ -1,0 +1,171 @@
+@import "../common/mixins";
+.gold-release-tracker {
+  border-radius: 6px;
+  margin-top: 46px;
+  @include box-shadow(0px 3px 10px 0, rgba(0, 0, 0, 0.08));
+  @media screen and (max-width: 600px) {
+    margin-top: 0;
+  }
+  .defult-bg {
+    background: $grey-color;
+  }
+  .delivery-success-bg {
+    background: #508312;
+  }
+  .border-box {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    border-radius: 12px;
+    margin: 18px 32px;
+    .box-bg {
+      background: linear-gradient(93.1deg, #FBC441 9.06%, rgba(251, 196, 65, 0.74) 85.96%);
+      border-radius: 12px 12px 0px 0px;
+    }
+    @media screen and (max-width: 600px) {
+      margin: 16px;
+      .p-4 {
+        padding: 1rem !important;
+      }
+    }
+  }
+  .header {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+  }
+  h2 {
+    background: #FBDDD1;
+    border-radius: 4px;
+    padding: 12px 14px;
+    margin-left: 8px;
+    font-size: 24px;
+    line-height: 32px;
+    &:first-child {
+      margin-left: 0px;
+    }
+  }
+  h3 {
+    font-size: 24px;
+    color: #1E2D4B;
+    letter-spacing: -0.01em;
+    @media screen and (max-width: 600px) {
+      font-size: 18px;
+    }
+  }
+  h4 {
+    font-size: 16px;
+    color: #1E2D4B;
+    letter-spacing: -0.01em;
+    @media screen and (max-width: 600px) {
+      font-size: 14px;
+    }
+  }
+  p {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1E2D4B;
+    letter-spacing: -0.01em;
+    @media screen and (max-width: 600px) {
+      font-size: 12px;
+      font-weight: 500;
+    }
+  }
+  .video-section {
+    p {
+      color: #1E2D4B;
+    }
+  }
+  .arrival-text {
+    font-size: 12px;
+    color: #4B576F;
+  }
+  .loan-manager-info {
+    background: #fdeee8;
+    border-radius: 8px;
+    margin: 0 32px;
+    @media screen and (max-width: 600px) {
+      margin: 0 16px;
+    }
+  }
+  .loan-manager {
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1.5px solid #00000078;
+    &.pb-6 {
+      padding-bottom: 5rem;
+    }
+    label {
+      color: #788193;
+      font-size: 12px;
+      line-height: 17px;
+    }
+    .info-message {
+      background: #fdeee8;
+      border-radius: 10px;
+      padding: 12px;
+      margin-top: 20px;
+      &::after {
+        content: "";
+        position: absolute;
+        display: block;
+        border-color: transparent;
+        border-bottom-color: #fdeee8;
+        border-top-color: #fdeee8;
+        border-style: solid;
+        border-width: 0 0.8rem 0.9rem 0.8rem;
+        top: -10px;
+        left: 16px;
+      }
+    }
+  }
+  .info-text {
+    background: $body-background-color;
+    @media screen and (max-width: 600px) {
+      &.p-4 {
+        padding: 1rem !important;
+      }
+      .ml-5 {
+        margin-left: 1rem !important;
+      }
+    }
+    .text-bg {
+      background: linear-gradient(90deg, #EA5518 -4.17%,
+      #E63918 21.6%, #B01280 52.15%, #1E65AF 104.17%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      @media screen and (max-width: 600px) {
+        font-size: 12px;
+      }
+    }
+  }
+  .jewels-info {
+    h3, .jewels-carousel {
+      margin: 18px 32px;
+      @media screen and (max-width: 600px) {
+        margin: 16px;
+      }
+    }
+  }
+  .delivery-successful {
+    background: #76C11B;
+    @media screen and (max-width: 600px) {
+      .p-5 {
+        padding: 3rem 1.5rem !important;
+      }
+    }
+    h3 {
+      font-size: 28px;
+      @media screen and (max-width: 600px) {
+        font-size: 24px;
+      }
+    }
+    p {
+      font-size: 16px;
+      @media screen and (max-width: 600px) {
+        font-size: 14px;
+      }
+    }
+  }
+}
+.reschedule-slot {
+  color: #EA5518 !important;
+}

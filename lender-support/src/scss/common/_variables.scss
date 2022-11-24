@@ -1,0 +1,59 @@
+/* ==========
+Define Font family
+ ========== */
+$font-family: 'Gilroy';
+
+/* ==========
+Define Font Size
+ ========== */
+$base-font-size : 16;
+$base-font-size-mobile : 13;
+
+/* ==========
+Define font weight
+========== */
+$bold-font-weight : bold;
+$medium-bold-weight : 600;
+$light-weight: 300;
+$normal-font-weight : 500;
+
+/* ==========
+Define the color  variables 
+========== */
+$primary-color : #484848;
+$secondary-color: #727272;
+$tertiary-color: #969696;
+$white-color : #ffffff;
+$theme-color: #fe9411;
+$theme-second-color: #f7911e;
+$body-background-color: #fafafa;
+$form-element-border: #CCCCCC;
+$section-border-color: #f5f5f5;
+$blue-color: #1569d6;
+$error-text-color: #f13a30;
+$success-text-color: #69b757;
+$light-blue-color: #1287e5;
+$bg-color: #f6f8fa;
+$seperator-color: #eeeeee;
+$unselected-radio-button-color: #d9d9d9;
+$light-yellow-color: #ffeacf;
+$grey-color: #f2f2f2;
+/* ==========
+Define Border Radius 
+========== */
+$base-border-radius  : 5px;
+
+/* ==========
+Define the breakpoints at which your layout will change,
+ adapting to different screen sizes.
+==========  */
+$large-devices-min : 1200;
+
+$medium-devices-max : ($large-devices-min - 0.02);
+$medium-devices-min : 992;
+
+$tablet-devices-max : ($medium-devices-max - 0.02);
+$tablet-devices-min : 768;
+
+$mobile-devices-max-width : $tablet-devices-min - 0.02;
+$iphone-devices-max-width : 360;

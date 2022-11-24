@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="17.452" height="17.452" viewBox="0 0 17.452 17.452">
+    <defs>
+        <style>
+            .cls-1,.cls-2{fill:none}.cls-3,.cls-5{fill:#1287e5}.cls-4,.cls-5{stroke:none}
+        </style>
+    </defs>
+    <g id="icon_info" transform="translate(-467.195 -534.195)">
+        <g id="Path_509" class="cls-1" data-name="Path 509">
+            <path d="M8.726 0A8.726 8.726 0 1 1 0 8.726 8.726 8.726 0 0 1 8.726 0z" class="cls-4" transform="translate(467.195 534.195)"/>
+            <path d="M8.726 1C4.466 1 1 4.466 1 8.726s3.466 7.726 7.726 7.726 7.726-3.466 7.726-7.726S12.986 1 8.726 1m0-1a8.726 8.726 0 1 1 0 17.452A8.726 8.726 0 0 1 8.726 0z" class="cls-5" transform="translate(467.195 534.195)"/>
+        </g>
+        <g id="icon_forward" transform="rotate(180 241.921 275.421)">
+            <path id="Rectangle_1" d="M0 0h15.842v15.842H0z" class="cls-2" data-name="Rectangle 1"/>
+        </g>
+        <g id="Group_363" data-name="Group 363" transform="rotate(180 396.796 565.678)">
+            <rect id="Rectangle_3" width="1.342" height="6.44" class="cls-3" data-name="Rectangle 3" rx=".671" transform="translate(317 584)"/>
+            <rect id="Rectangle_4" width="1.342" height="1.342" class="cls-3" data-name="Rectangle 4" rx=".671" transform="translate(317 591.513)"/>
+        </g>
+    </g>
+</svg>

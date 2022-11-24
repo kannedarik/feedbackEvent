@@ -1,0 +1,134 @@
+@import 'variables.scss';
+@mixin transform($property) {
+    -webkit-transform: $property;
+        -ms-transform: $property;
+            transform: $property;
+}
+
+@mixin padding($property) {
+    padding : $property;
+}
+
+@mixin transition($duration) {
+    transition: all $duration cubic-bezier(0.85, -0.03, 0.16, 0.99);
+    -webkit-transition: all $duration cubic-bezier(0.85, -0.03, 0.16, 0.99);
+    -ms-transition: all $duration cubic-bezier(0.85, -0.03, 0.16, 0.99);
+    -o-transition: all $duration cubic-bezier(0.85, -0.03, 0.16, 0.99);
+    -moz-transition: all $duration cubic-bezier(0.85, -0.03, 0.16, 0.99);
+}
+
+@mixin button-box-shadow {
+    box-shadow: 2px 1px 3px rgba(0, 0, 0, .45);
+}
+
+@mixin justify-content($value) {
+    justify-content: $value;
+    -webkit-justify-content: $value
+}
+
+@mixin flex-direction($value) {
+    flex-direction: $value;
+    -webkit-flex-direction: $value
+}
+
+@mixin flex-wrap($value) {
+    flex-wrap: $value;
+    -webkit-flex-wrap: $value;
+}
+
+@mixin align-items($value) {
+    align-items: $value;
+    -webkit-align-items: $value;
+}
+
+@mixin font-awesome-unicode($unicode,$fontSize) {
+    content: $unicode;
+    font-family: 'Font Awesome\ 5 Free';
+    font-weight: 900;
+    font-size: $fontSize;
+}
+
+@mixin box-shadow($value:null,$color:null){
+    -moz-box-shadow: $value $color;
+        -webkit-box-shadow: $value $color;
+                box-shadow: $value $color;
+}
+
+@mixin text-gradient{
+    background: -webkit-linear-gradient(90deg, #f26622, #f78f1e);
+    background: linear-gradient(90deg, #f26622, #f78f1e);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+@mixin display($value){
+    display: $value;
+    display: -webkit-$value;
+}
+@mixin inner-page-text{
+    font-size: (16/15)+rem;
+    line-height: 20px;
+}
+
+@mixin block {
+    float: left;
+    width:100%;
+}
+
+%public-background-image{
+    background-repeat: no-repeat;
+    background-image: url('/static/img/sprites/public-sprite.svg');
+}
+
+%gradient-background{
+    background: -webkit-linear-gradient(90deg, #f26622, #f78f1e);
+    background: linear-gradient(90deg, #f26622, #f78f1e);
+}
+
+%tabs-similar-styles {
+    border: 1px solid $theme-color;
+    border-radius: $base-border-radius;
+    min-width: 200px;
+    padding: 10px 0px;
+    letter-spacing: 0.5px;
+}
+
+%tabs-active-styles {
+    @extend %gradient-background;
+    color: $white-color;
+    letter-spacing: 0.5px;
+}
+
+%triangle {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid white;
+    top: 0;
+    position: absolute;
+    z-index: 1;
+    @include transform(translateY(-100%));
+}
+
+.btn-proceed {
+    background-color: $blue-color;
+    border-radius: $base-border-radius;
+    // background: linear-gradient(260deg, #1287e5, #49a7f2);
+    @include box-shadow(2.1px 2.1px 10px 0 ,rgba(88, 88, 88, 0.2));
+    min-height: 40px;
+    font-size: (14/$base-font-size)+rem;
+    &:disabled {
+        background-color: #969696;
+        color: #cccccc;
+        &:hover {
+            background-color: #969696;
+            color: #cccccc;
+        }
+    }
+    &:hover {
+        color: $white-color;
+        background-color: #1287e5;
+    }
+}

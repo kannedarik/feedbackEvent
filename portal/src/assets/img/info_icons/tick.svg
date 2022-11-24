@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <style>
+      .cls-1,.cls-3{fill:none}.cls-2{clip-path:url(#clip-path)}.cls-3{stroke:#ccc;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px}
+    </style>
+    <clipPath id="clip-path">
+      <path d="M0 0h20v20H0z" class="cls-1"/>
+    </clipPath>
+  </defs>
+  <g id="Group_6303" data-name="Group 6303" transform="translate(-28 -283)">
+    <g id="Group_6199" data-name="Group 6199" transform="translate(1 3.23)">
+      <g id="Checkbox_On" class="cls-2" transform="translate(27 279.77)">
+        <path id="Path_514" d="M437.856 1525.391l3.556 3.656 7.657-7.873" class="cls-3" data-name="Path 514" transform="translate(-433.355 -1514.674)"/>
+      </g>
+    </g>
+  </g>
+</svg>

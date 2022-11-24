@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1wx0mhb" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Zeebe Modeler" exporterVersion="0.10.0">
+  <bpmn:process id="renewal_order_cancellation" name="Renewal Order Cancellation" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="Renewal Order Cancellation">
+      <bpmn:outgoing>Flow_0zhov6s</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="Activity_04yer8x" name="Reset loan status in Core">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="renewal.cancel.loans.restore" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_06f0oh1</bpmn:incoming>
+      <bpmn:outgoing>Flow_0n10m2t</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:intermediateCatchEvent id="Event_0vpaj5k" name="After 5 minutes">
+      <bpmn:incoming>Flow_03wgozw</bpmn:incoming>
+      <bpmn:outgoing>Flow_0lxtwan</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_0z8uxod">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">PT15S</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
+    <bpmn:serviceTask id="Activity_1dearn8" name="Reset loan state in Payments">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="renewal.cancel.payments.reset" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0n10m2t</bpmn:incoming>
+      <bpmn:outgoing>Flow_12ek2eq</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_0olc01w" name="Update renewal ticket on Salesforce">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="renewal.cancel.notification.ticket" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="category" value="transactional" />
+          <zeebe:header key="provider" value="salesforce" />
+          <zeebe:header key="type" value="ticket" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_00cm4su</bpmn:incoming>
+      <bpmn:outgoing>Flow_05r05tl</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:parallelGateway id="Gateway_0a6n9q8">
+      <bpmn:incoming>Flow_0lxtwan</bpmn:incoming>
+      <bpmn:outgoing>Flow_0s9ywkd</bpmn:outgoing>
+      <bpmn:outgoing>Flow_17qsz7f</bpmn:outgoing>
+      <bpmn:outgoing>Flow_153f7fl</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:parallelGateway id="Gateway_0p3juba">
+      <bpmn:incoming>Flow_1txl98m</bpmn:incoming>
+      <bpmn:incoming>Flow_0l35pfo</bpmn:incoming>
+      <bpmn:incoming>Flow_0vvi3ud</bpmn:incoming>
+      <bpmn:incoming>Flow_0r7hp6c</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ss7flq</bpmn:outgoing>
+    </bpmn:parallelGateway>
+    <bpmn:serviceTask id="Activity_1071w61" name="Update Renewal Order">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="renewal.order.status" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="status" value="cancellation_initiated" />
+          <zeebe:header key="paymentstatus" value="pending" />
+          <zeebe:header key="loanstatus" value="pending" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_17fctb8</bpmn:incoming>
+      <bpmn:outgoing>Flow_06f0oh1</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_06d6h8w" name="Send renewal cancellation sms to customer">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="renewal.cancel.notification.sms" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="category" value="transactional" />
+          <zeebe:header key="provider" value="kaleyra" />
+          <zeebe:header key="type" value="sms" />
+          <zeebe:header key="template" value="RenewalCancellationSMS" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0s9ywkd</bpmn:incoming>
+      <bpmn:outgoing>Flow_1txl98m</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_06f0oh1" sourceRef="Activity_1071w61" targetRef="Activity_04yer8x" />
+    <bpmn:sequenceFlow id="Flow_0n10m2t" sourceRef="Activity_04yer8x" targetRef="Activity_1dearn8" />
+    <bpmn:sequenceFlow id="Flow_12ek2eq" sourceRef="Activity_1dearn8" targetRef="Activity_1gjhbrj" />
+    <bpmn:sequenceFlow id="Flow_0lxtwan" sourceRef="Event_0vpaj5k" targetRef="Gateway_0a6n9q8" />
+    <bpmn:sequenceFlow id="Flow_01caf70" sourceRef="Gateway_0a6n9q8" targetRef="Gateway_11yrtw1" />
+    <bpmn:sequenceFlow id="Flow_05r05tl" sourceRef="Activity_0olc01w" targetRef="Gateway_0p3l6kr" />
+    <bpmn:sequenceFlow id="Flow_0s9ywkd" sourceRef="Gateway_0a6n9q8" targetRef="Activity_06d6h8w" />
+    <bpmn:sequenceFlow id="Flow_1txl98m" sourceRef="Activity_06d6h8w" targetRef="Gateway_0p3juba" />
+    <bpmn:endEvent id="Event_11vdfra">
+      <bpmn:incoming>Flow_1ss7flq</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1ss7flq" sourceRef="Gateway_0p3juba" targetRef="Event_11vdfra" />
+    <bpmn:sequenceFlow id="Flow_03wgozw" sourceRef="Activity_1v7pfk4" targetRef="Event_0vpaj5k" />
+    <bpmn:serviceTask id="Activity_1v7pfk4" name="Reset current slab from old loan">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="loanEnhancement.cancel.resetCurrentSlab" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1kk98c4</bpmn:incoming>
+      <bpmn:outgoing>Flow_03wgozw</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_05f5tsz" name="Update LE ticket on Salesforce">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="loanEnhancement.cancel.notification.ticket" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="category" value="transactional" />
+          <zeebe:header key="provider" value="salesforce" />
+          <zeebe:header key="type" value="ticket" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0ml5j8o</bpmn:incoming>
+      <bpmn:outgoing>Flow_1her7kw</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_17qsz7f" sourceRef="Gateway_0a6n9q8" targetRef="Gateway_0r2butp" />
+    <bpmn:sequenceFlow id="Flow_1her7kw" sourceRef="Activity_05f5tsz" targetRef="Gateway_0z0w2tz" />
+    <bpmn:exclusiveGateway id="Gateway_11yrtw1" name="Renewal ticket created?">
+      <bpmn:incoming>Flow_01caf70</bpmn:incoming>
+      <bpmn:outgoing>Flow_00cm4su</bpmn:outgoing>
+      <bpmn:outgoing>Flow_04vkfcw</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_00cm4su" name="Yes" sourceRef="Gateway_11yrtw1" targetRef="Activity_0olc01w">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">= ticketcreated = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:exclusiveGateway id="Gateway_0r2butp" name="LE ticket Created?">
+      <bpmn:incoming>Flow_17qsz7f</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ml5j8o</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0i1cy34</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0ml5j8o" name="Yes" sourceRef="Gateway_0r2butp" targetRef="Activity_05f5tsz">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">= loanEnhancementTicketCreated = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:exclusiveGateway id="Gateway_0p3l6kr">
+      <bpmn:incoming>Flow_05r05tl</bpmn:incoming>
+      <bpmn:incoming>Flow_04vkfcw</bpmn:incoming>
+      <bpmn:outgoing>Flow_0l35pfo</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0l35pfo" sourceRef="Gateway_0p3l6kr" targetRef="Gateway_0p3juba" />
+    <bpmn:exclusiveGateway id="Gateway_0z0w2tz">
+      <bpmn:incoming>Flow_1her7kw</bpmn:incoming>
+      <bpmn:incoming>Flow_0i1cy34</bpmn:incoming>
+      <bpmn:outgoing>Flow_0vvi3ud</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0vvi3ud" sourceRef="Gateway_0z0w2tz" targetRef="Gateway_0p3juba" />
+    <bpmn:sequenceFlow id="Flow_0i1cy34" name="No" sourceRef="Gateway_0r2butp" targetRef="Gateway_0z0w2tz">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">= loanEnhancementTicketCreated = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_04vkfcw" name="No" sourceRef="Gateway_11yrtw1" targetRef="Gateway_0p3l6kr">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">= ticketcreated = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:serviceTask id="Activity_0mkqtxg" name="Send LE cancellation sms to customer">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="loanEnhancement.cancel.notification.sms" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="category" value="transactional" />
+          <zeebe:header key="provider" value="twofactor" />
+          <zeebe:header key="type" value="sms" />
+          <zeebe:header key="template" value="LoanEnhancementCancellationSMS" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_153f7fl</bpmn:incoming>
+      <bpmn:outgoing>Flow_0r7hp6c</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_153f7fl" sourceRef="Gateway_0a6n9q8" targetRef="Activity_0mkqtxg" />
+    <bpmn:sequenceFlow id="Flow_0r7hp6c" sourceRef="Activity_0mkqtxg" targetRef="Gateway_0p3juba" />
+    <bpmn:serviceTask id="Activity_0cn0vag" name="Validate Renewal Cancellation Order">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="renewal.cancel.validate" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0zhov6s</bpmn:incoming>
+      <bpmn:outgoing>Flow_17fctb8</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0zhov6s" sourceRef="StartEvent_1" targetRef="Activity_0cn0vag" />
+    <bpmn:sequenceFlow id="Flow_17fctb8" sourceRef="Activity_0cn0vag" targetRef="Activity_1071w61" />
+    <bpmn:serviceTask id="Activity_1gjhbrj" name="Reset loan state in accounts">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="renewal.cancel.accounts.reset" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_12ek2eq</bpmn:incoming>
+      <bpmn:outgoing>Flow_1kk98c4</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1kk98c4" sourceRef="Activity_1gjhbrj" targetRef="Activity_1v7pfk4" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="renewal_order_cancellation">
+      <bpmndi:BPMNEdge id="Flow_17fctb8_di" bpmnElement="Flow_17fctb8">
+        <di:waypoint x="340" y="507" />
+        <di:waypoint x="370" y="507" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0zhov6s_di" bpmnElement="Flow_0zhov6s">
+        <di:waypoint x="208" y="507" />
+        <di:waypoint x="240" y="507" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0r7hp6c_di" bpmnElement="Flow_0r7hp6c">
+        <di:waypoint x="1550" y="700" />
+        <di:waypoint x="1670" y="700" />
+        <di:waypoint x="1670" y="532" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_153f7fl_di" bpmnElement="Flow_153f7fl">
+        <di:waypoint x="1320" y="532" />
+        <di:waypoint x="1320" y="700" />
+        <di:waypoint x="1450" y="700" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_04vkfcw_di" bpmnElement="Flow_04vkfcw">
+        <di:waypoint x="1415" y="420" />
+        <di:waypoint x="1585" y="420" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1493" y="402" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0i1cy34_di" bpmnElement="Flow_0i1cy34">
+        <di:waypoint x="1415" y="210" />
+        <di:waypoint x="1585" y="210" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1493" y="192" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0vvi3ud_di" bpmnElement="Flow_0vvi3ud">
+        <di:waypoint x="1635" y="210" />
+        <di:waypoint x="1670" y="210" />
+        <di:waypoint x="1670" y="482" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0l35pfo_di" bpmnElement="Flow_0l35pfo">
+        <di:waypoint x="1635" y="420" />
+        <di:waypoint x="1670" y="420" />
+        <di:waypoint x="1670" y="482" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ml5j8o_di" bpmnElement="Flow_0ml5j8o">
+        <di:waypoint x="1390" y="185" />
+        <di:waypoint x="1390" y="120" />
+        <di:waypoint x="1450" y="120" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1397" y="150" width="18" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_00cm4su_di" bpmnElement="Flow_00cm4su">
+        <di:waypoint x="1390" y="395" />
+        <di:waypoint x="1390" y="330" />
+        <di:waypoint x="1450" y="330" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1397" y="360" width="18" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1her7kw_di" bpmnElement="Flow_1her7kw">
+        <di:waypoint x="1550" y="120" />
+        <di:waypoint x="1610" y="120" />
+        <di:waypoint x="1610" y="185" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_17qsz7f_di" bpmnElement="Flow_17qsz7f">
+        <di:waypoint x="1320" y="482" />
+        <di:waypoint x="1320" y="210" />
+        <di:waypoint x="1365" y="210" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_03wgozw_di" bpmnElement="Flow_03wgozw">
+        <di:waypoint x="1120" y="507" />
+        <di:waypoint x="1192" y="507" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ss7flq_di" bpmnElement="Flow_1ss7flq">
+        <di:waypoint x="1695" y="507" />
+        <di:waypoint x="1812" y="507" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1txl98m_di" bpmnElement="Flow_1txl98m">
+        <di:waypoint x="1550" y="577" />
+        <di:waypoint x="1670" y="577" />
+        <di:waypoint x="1670" y="532" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0s9ywkd_di" bpmnElement="Flow_0s9ywkd">
+        <di:waypoint x="1320" y="532" />
+        <di:waypoint x="1320" y="577" />
+        <di:waypoint x="1450" y="577" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_05r05tl_di" bpmnElement="Flow_05r05tl">
+        <di:waypoint x="1550" y="330" />
+        <di:waypoint x="1610" y="330" />
+        <di:waypoint x="1610" y="395" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_01caf70_di" bpmnElement="Flow_01caf70">
+        <di:waypoint x="1320" y="482" />
+        <di:waypoint x="1320" y="420" />
+        <di:waypoint x="1365" y="420" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0lxtwan_di" bpmnElement="Flow_0lxtwan">
+        <di:waypoint x="1228" y="507" />
+        <di:waypoint x="1295" y="507" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_12ek2eq_di" bpmnElement="Flow_12ek2eq">
+        <di:waypoint x="800" y="507" />
+        <di:waypoint x="860" y="507" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0n10m2t_di" bpmnElement="Flow_0n10m2t">
+        <di:waypoint x="640" y="507" />
+        <di:waypoint x="700" y="507" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_06f0oh1_di" bpmnElement="Flow_06f0oh1">
+        <di:waypoint x="470" y="507" />
+        <di:waypoint x="540" y="507" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1kk98c4_di" bpmnElement="Flow_1kk98c4">
+        <di:waypoint x="960" y="507" />
+        <di:waypoint x="1020" y="507" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="172" y="489" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="153" y="532" width="75" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_04yer8x_di" bpmnElement="Activity_04yer8x">
+        <dc:Bounds x="540" y="467" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1dearn8_di" bpmnElement="Activity_1dearn8">
+        <dc:Bounds x="700" y="467" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1071w61_di" bpmnElement="Activity_1071w61">
+        <dc:Bounds x="370" y="467" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0cn0vag_di" bpmnElement="Activity_0cn0vag">
+        <dc:Bounds x="240" y="467" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0vpaj5k_di" bpmnElement="Event_0vpaj5k">
+        <dc:Bounds x="1192" y="489" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1175" y="532" width="74" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0olc01w_di" bpmnElement="Activity_0olc01w">
+        <dc:Bounds x="1450" y="290" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0a6n9q8_di" bpmnElement="Gateway_0a6n9q8">
+        <dc:Bounds x="1295" y="482" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0p3juba_di" bpmnElement="Gateway_0p3juba">
+        <dc:Bounds x="1645" y="482" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_06d6h8w_di" bpmnElement="Activity_06d6h8w">
+        <dc:Bounds x="1450" y="537" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_11vdfra_di" bpmnElement="Event_11vdfra">
+        <dc:Bounds x="1812" y="489" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_077n06k_di" bpmnElement="Activity_1v7pfk4">
+        <dc:Bounds x="1020" y="467" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_05f5tsz_di" bpmnElement="Activity_05f5tsz">
+        <dc:Bounds x="1450" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_11yrtw1_di" bpmnElement="Gateway_11yrtw1" isMarkerVisible="true">
+        <dc:Bounds x="1365" y="395" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1354" y="452" width="72" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0r2butp_di" bpmnElement="Gateway_0r2butp" isMarkerVisible="true">
+        <dc:Bounds x="1365" y="185" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1368" y="242" width="46" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0p3l6kr_di" bpmnElement="Gateway_0p3l6kr" isMarkerVisible="true">
+        <dc:Bounds x="1585" y="395" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0z0w2tz_di" bpmnElement="Gateway_0z0w2tz" isMarkerVisible="true">
+        <dc:Bounds x="1585" y="185" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0mkqtxg_di" bpmnElement="Activity_0mkqtxg">
+        <dc:Bounds x="1450" y="660" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0qryrgs_di" bpmnElement="Activity_1gjhbrj">
+        <dc:Bounds x="860" y="467" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="icon_back_Grey" width="32" height="32" viewBox="0 0 32 32">
+    <defs>
+        <style>
+            .cls-1,.cls-2{fill:none}.cls-2{stroke:#969696;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-width:2px}
+        </style>
+    </defs>
+    <path id="Rectangle_1" d="M0 0h32v32H0z" class="cls-1" data-name="Rectangle 1"/>
+    <g id="Group_6810" data-name="Group 6810" transform="translate(.571)">
+        <path id="Stroke_1" d="M16 .5H0" class="cls-2" data-name="Stroke 1" transform="translate(7.429 15.5)"/>
+        <path id="Stroke_3" d="M8 0L0 8l8 8" class="cls-2" data-name="Stroke 3" transform="translate(7.429 8)"/>
+    </g>
+</svg>

@@ -1,0 +1,634 @@
+/* ==========
+Import Font
+ ========== */
+@font-face {
+  font-family: "Gilroy";
+  src: url("/css/fonts/Gilroy-Medium.woff2") format("woff2"),
+    url("/css/fonts/Gilroy-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/css/fonts/Gilroy-RegularItalic.woff2") format("woff2"),
+    url("/css/fonts/Gilroy-RegularItalic.woff") format("woff");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/css/fonts/Gilroy-Extrabold.woff2") format("woff2"),
+    url("/css/fonts/Gilroy-Extrabold.woff") format("woff");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/css/fonts/Gilroy-ThinItalic.woff2") format("woff2"),
+    url("/css/fonts/Gilroy-ThinItalic.woff") format("woff");
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/css/fonts/Gilroy-UltraLight.woff2") format("woff2"),
+    url("/css/fonts/Gilroy-UltraLight.woff") format("woff");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/css/fonts/Gilroy-UltraLightItalic.woff2") format("woff2"),
+    url("/css/fonts/Gilroy-UltraLightItalic.woff") format("woff");
+  font-weight: 200;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/css/fonts/Gilroy-BlackItalic.woff2") format("woff2"),
+    url("/css/fonts/Gilroy-BlackItalic.woff") format("woff");
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/css/fonts/Gilroy-LightItalic.woff2") format("woff2"),
+    url("/css/fonts/Gilroy-LightItalic.woff") format("woff");
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/css/fonts/Gilroy-Bold.woff2") format("woff2"),
+    url("/css/fonts/Gilroy-Bold.woff") format("woff");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/css/fonts/Gilroy-Thin.woff2") format("woff2"),
+    url("/css/fonts/Gilroy-Thin.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/css/fonts/Gilroy-MediumItalic.woff2") format("woff2"),
+    url("/css/fonts/Gilroy-MediumItalic.woff") format("woff");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/css/fonts/Gilroy-Heavy.woff2") format("woff2"),
+    url("/css/fonts/Gilroy-Heavy.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+}
+
+// @font-face {
+//   font-family: 'Gilroy';
+//   src: url('/css/fonts/Gilroy-Black.woff2') format('woff2'),
+//     url('/css/fonts/Gilroy-Black.woff') format('woff');
+//   font-weight: 900;
+//   font-style: normal;
+// }
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/css/fonts/Gilroy-BoldItalic.woff2") format("woff2"),
+    url("/css/fonts/Gilroy-BoldItalic.woff") format("woff");
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/css/fonts/Gilroy-ExtraboldItalic.woff2") format("woff2"),
+    url("/css/fonts/Gilroy-ExtraboldItalic.woff") format("woff");
+  font-weight: 800;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/css/fonts/Gilroy-Light.woff2") format("woff2"),
+    url("/css/fonts/Gilroy-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/css/fonts/Gilroy-Semibold.woff2") format("woff2"),
+    url("/css/fonts/Gilroy-Semibold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/css/fonts/Gilroy-HeavyItalic.woff2") format("woff2"),
+    url("/css/fonts/Gilroy-HeavyItalic.woff") format("woff");
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/css/fonts/Gilroy-Regular.woff2") format("woff2"),
+    url("/css/fonts/Gilroy-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/css/fonts/Gilroy-SemiboldItalic.woff2") format("woff2"),
+    url("/css/fonts/Gilroy-SemiboldItalic.woff") format("woff");
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("/css/fonts/Gilroy-Black.woff2") format("woff2"),
+    url("/css/fonts/Gilroy-Black.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@import "mixins.scss";
+
+html {
+  font-size: $base-font-size + px;
+}
+
+body {
+  font-family: $font-family;
+  font-size: 1rem;
+  color: $primary-color;
+  font-weight: $normal-font-weight;
+  background-color: $body-background-color;
+  line-height: 1.42857143;
+}
+
+.img-responsive {
+  max-width: 100%;
+  height: auto;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.pointer-events-none {
+  pointer-events: none;
+}
+
+/* Reset Padding and Margin to 0px Starts Here*/
+
+.no-margin {
+  margin: 0;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.opacity-0 {
+  opacity: 0;
+}
+
+/* Reset Padding and Margin to 0px Ends Here*/
+
+/* Display Classes Starts Here */
+
+.display-inline-block {
+  display: inline-block;
+}
+
+.display-inline {
+  display: inline;
+}
+
+.display-none {
+  display: none;
+}
+
+/* Display Classes Ends Here */
+
+/* Font Weights Starts Here */
+.bold-font {
+  font-weight: $bold-font-weight;
+}
+.normal-font {
+  font-weight: $normal-font-weight;
+}
+
+.medium-font-weight {
+  font-weight: $medium-bold-weight;
+}
+
+.light-font-weight {
+  font-weight: $light-weight;
+}
+
+/* Font Weights Ends Here */
+
+/* Background Color as white */
+
+.white-background {
+  background-color: $white-color !important;
+}
+.bg-blue {
+  background: -webkit-linear-gradient(90deg, $blue-color, $light-blue-color);
+  background: linear-gradient(90deg, $blue-color, $light-blue-color);
+}
+.white-color {
+  color: $white-color;
+}
+
+.theme-color {
+  color: $light-blue-color;
+}
+
+.theme-secondary-color {
+  color: $light-blue-color;
+}
+.font-primary {
+  color: $primary-color;
+}
+.font-secondary {
+  color: $secondary-color;
+}
+.font-tertiary {
+  color: $tertiary-color;
+}
+.font-light-blue {
+  color: $light-blue-color;
+}
+.theme-gradient-title {
+  span {
+    @include text-gradient;
+  }
+}
+
+/* Background Color as white */
+small,
+.font-small {
+  font-size: 0.88rem;
+}
+
+.normal-font-size {
+  font-size: 1rem;
+}
+
+.mandatory-star {
+  font-size: 6px;
+}
+
+.block {
+  float: left;
+  width: 100%;
+}
+.margin-16 {
+  margin: 16px;
+}
+.mt-150{
+  margin-top: 150px !important;
+}
+ul,
+li {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+[v-cloak] {
+  display: none;
+}
+.custom-mobile-header {
+  padding: 16px;
+  border: solid 1px #ecedef;
+  background-color: $white-color;
+  h3 {
+    padding-top: 16px;
+  }
+}
+.custom-desktop-header {
+  padding: 32px;
+  background-color: $white-color;
+}
+.btn-primary {
+  font-size: 14px;
+  font-weight: $medium-bold-weight;
+  color: $body-background-color;
+  border-radius: 60px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+  background-image: linear-gradient(to top, #1287e5 1%, #6cb9f5 99%);
+  width: 166px;
+  height: 44px;
+  &:disabled {
+    background-color: #969696;
+    color: #cccccc;
+    &:hover {
+      background-color: #969696;
+      color: #cccccc;
+    }
+  }
+}
+.back-drop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(5, 5, 5, 0.41);
+  z-index: 99;
+}
+.bottom-0 {
+  bottom: 0;
+}
+.btn-desktop-primary {
+  width: 190px;
+  height: 45px;
+  border-radius: 4px;
+  box-shadow: 2.1px 2.1px 10px 0 rgba(88, 88, 88, 0.2);
+  background-image: linear-gradient(255deg, #1287e5, #49a7f2);
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  font-weight: $medium-bold-weight;
+  color: $white-color;
+  margin-top: 28px;
+  &:hover {
+    color: $white-color;  
+  }
+}
+.footer {
+  padding: 8px 15px;
+  border: solid 1px #e5e5e5;
+  background-color: #ffffff;
+}
+.custom-desktop-footer {
+  padding: 16px 50px;
+  box-shadow: 0px -3px 10px 0 rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+  left: 0;
+  p {
+    margin-right: 32px;
+    font-size: 14px;
+    span {
+      font-size: 18px;
+    }
+  }
+}
+.options-list {
+  padding: 16px;
+}
+
+
+.radio-button-wrapper {
+  position: relative;
+  input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    z-index: 1;
+    &:checked {
+      & ~ .radio-button {
+        border: 2px solid $light-blue-color;
+        &:after {
+          background-color: $light-blue-color;
+        }
+      }
+    }
+  }
+  .radio-button {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid $unselected-radio-button-color;
+    position: relative;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      @include transform(translate(-50%, -50%));
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      @include transition(0.5s);
+    }
+  }
+}
+.back-icon-container {
+  p {
+    font-size: 12px;
+  }
+}
+.btn:disabled {
+  cursor: default;
+}
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
+  color: #ffffff;
+  background-color: rgb(252, 140, 53);
+  border-radius: 0;
+  border-top:0;
+  border-left:0;
+  border-right:0;
+}
+.card-header {
+  padding: 0px;
+  background-color: transparent;
+  border-bottom: 0 none;
+}
+.nav-tabs .nav-link {
+  line-height: 19px;
+  color: $primary-color;
+  -webkit-box-align: center;
+  border-bottom: 1px solid $body-background-color;
+  display: -webkit-box;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  vertical-align: top;
+  margin: 0 5px 0 0;
+  font-size: $base-font-size;
+  font-weight: $normal-font-weight;
+  @include justify-content(center);
+  @include display(flex);
+  @include align-items(center);
+  @include padding(.6em 1em);
+  &:hover{
+    border-bottom: 4px solid #f57545;
+    border-radius: 0px;
+    font-weight: bold;
+  }
+  &.active{
+    color: #f25d33;
+    background-color: $white-color;
+    border-bottom: 4px solid #f57545;
+    border-radius: 0px;
+    font-weight: bold;
+  }
+}
+.card {
+  border: 0 none;
+}
+.table-sec {
+  .card {
+    background-color: $body-background-color;
+  }
+}
+.table-sec .tab-content > .tab-pane {
+  padding: 0px;
+}
+.table-sec .nav-link {
+  font-size: 14px !important;
+  padding: 10px 35px;
+  border: none;
+}
+
+.table-sec .tab-content {
+  margin-top: 35px;
+}
+.table-sec {
+  padding: 15px;
+  border: 1px solid #ddd;
+  background-color: $body-background-color;
+  border-radius: 4px;
+}
+
+
+.lenders-tab {
+  .card-header-pills{
+    margin: 0px;
+  }
+  .card-header {
+    padding: 0; 
+    background-color: $white-color;
+    border-color: $white-color;
+  }
+  .card-body{
+    padding: 0px;
+  }
+  
+}
+.card-header-tabs{
+  margin-left: 1px;
+}
+.btn-rupeek {
+  background: -webkit-linear-gradient(90deg, $blue-color, $light-blue-color);
+  background: linear-gradient(90deg, $blue-color, $light-blue-color);
+  border-color: $light-blue-color;
+  font-weight: $bold-font-weight;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &:focus,&:hover,&:active {
+    box-shadow: none;
+    border-color: $light-blue-color !important;
+  }
+  &.collapsed {
+    border-bottom-right-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+    align-items: baseline;
+    &::after {
+      transform: rotate(0deg);
+    }
+  }
+  &::after {
+    content: "\276F";
+    width: 1em;
+    height: 1em;
+    text-align: center;
+    transition: all 0.35s;
+    transform: rotate(90deg);
+  }
+}
+
+.btn-outline-rupeek {
+  color: $blue-color;
+  border-color:$blue-color;
+  font-weight: $bold-font-weight;
+  background-color: $white-color;
+  &.btn-secondary{
+    &:focus {
+      border-color:$blue-color;
+      background-image: linear-gradient(to top, $blue-color, $light-blue-color);
+      color: $white-color;
+      box-shadow: none;
+    }
+    &:not(:disabled):not(.disabled):active:focus{
+      box-shadow: none;
+    }
+    &:not(:disabled):not(.disabled):active {
+      color: $white-color;
+      border-color: $blue-color;
+      background-image: linear-gradient(to top, $blue-color, $light-blue-color);
+    }
+  }
+  &:hover {
+    color: $white-color;
+    background-color: $blue-color;
+    border-color: $blue-color;
+    background-image: linear-gradient(to top, $blue-color, $light-blue-color);
+  }
+}
+.form-control {
+  height: 45px;
+  background-color: #fbfbfb;
+  font-weight: 500;
+}
+select.form-control {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url("assets/img/down_arrow.png") no-repeat center right 14px;
+  background-size: 10px;
+  cursor: pointer;
+}
+//calendar styles
+.date-style {
+  box-shadow: none;
+  padding: 0px 15px !important;
+  line-height: 38px;
+  &::-webkit-inner-spin-button,
+  &::-webkit-calendar-picker-indicator {
+    -webkit-appearance: none;
+    color: transparent;
+    background: transparent;
+  }
+}
+input[type="date"].date-style {
+  background-image: url('assets/img/calender.jpg');
+  background-position: center right 14px;
+  background-size: 12px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+#kvb___BV_tab_button__, #icici___BV_tab_button__{
+  text-transform: uppercase;
+}
+#federal___BV_tab_button__, #rupeek___BV_tab_button__{
+  text-transform: capitalize;
+}

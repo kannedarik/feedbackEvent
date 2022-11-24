@@ -1,0 +1,204 @@
+@import '../common/mixins';
+
+.payment-options-wrapper {
+  position: fixed;
+  bottom: 0;
+  z-index: 1000;  
+  border-radius: 16px 16px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  @include box-shadow(0 -12px 10px 0, rgba(0, 0, 0, 0.09));
+  h3 {
+    font-size: 1.125rem;
+  }
+  .header {
+    padding: 16px 16px 0;
+  }
+  .footer {
+    border-top: 1px solid $body-background-color;
+    padding: 10px 16px;
+  }
+  &.payment-methods {
+    background-color: $body-background-color;
+    top: 0;
+    .body-container {
+      max-height: calc(100vh - 130px);
+      overflow-y: auto;
+    }
+  }
+}
+
+.payment-options {
+  padding: 0 16px;
+  border-radius: $base-border-radius;
+  position: relative;
+  background: #FFFFFF;
+  border: 1.25px solid #F5F5F5;
+  box-sizing: border-box;
+  @include box-shadow(0 5px 10px 0, rgba(0, 0, 0, 0.1));
+  .form-check-label {
+    cursor: pointer;
+    line-height: 15px;
+    width: 100%;
+    font-size: 14px;
+    color: #727272;
+  }
+  h5 {
+    font-weight: $bold-font-weight;
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    @include transform(translateY(-50%));
+  }
+  &.active {
+    border-color: $theme-color;
+    box-shadow: 0 0 4px 0 rgba(234, 85, 25, 0.5);
+    label {
+      font-weight: $bold-font-weight;
+    }
+  }
+  &.disabled {
+    pointer-events: none;
+    background-color: $form-element-border;
+    border-color: $form-element-border;
+    .radio-button {
+      &:after {
+        background-color: $secondary-color;
+      }
+    }
+  }
+  &.pointer-events-painted {
+    pointer-events: painted;
+  }
+  .info-icon-wrapper {
+    pointer-events: initial;
+  }
+}
+
+.radio-button-wrapper {
+  position: relative;
+  input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    z-index: 1;
+    &:checked {
+      &~ .radio-button {
+        border: 2px solid $theme-color;
+        &:after {
+          background-color: $theme-color;
+        }
+      }
+    }
+  }
+  .radio-button {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid #E5E5E5;
+    position: relative;
+    &:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      @include transform(translate(-50%, -50%));
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: transparent;
+      @include transition(0.5s);
+    }
+  }
+}
+
+.van-number-wrapper {
+  flex-wrap: wrap;
+  display: -webkit-flex;
+  -webkit-flex-wrap: wrap;
+  &> .flex-1 {
+    max-width: 280px;
+    min-width: 280px;
+    margin: 0 auto;
+  }
+  .van-number-card {
+    @include box-shadow(0 0 15px 0, rgba(0, 0, 0, 0.08));
+    border-radius: $base-border-radius;
+    overflow: hidden;
+    header {
+      padding: 30px 20px;
+      background-color: rgba(254, 147, 17, 0.1);
+      &> h5 {
+        font-size: 1.2rem;
+      }
+    }
+    .header-loan-details {
+      font-size: 0.8rem;
+      h5 {
+        font-size: 0.7rem;
+        color: $secondary-color;
+      }
+    }
+    .account-details-wrapper {
+        font-size: 0.875rem;
+        padding: 15px 20px;
+        border-bottom: 1px solid #f5f6f8;
+        h5 {
+          color: $secondary-color;
+          font-size: 0.8rem;
+        }
+        h6 {
+          color: $primary-color;
+          font-size: 1rem;
+        }
+    }
+    .copy-info {
+      color: $tertiary-color;
+      font-size: 0.75rem;
+      &.pointer-events-none {
+        opacity: 0.45;
+      }
+    }
+    .copy-symbol-wrapper {
+      position: relative;
+      margin-right: 10px;
+      %common-symbol {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border: 1px solid #fe9411;
+      }
+      .boxex {
+        @extend %common-symbol;
+        position: relative;
+        background-color: #fff;
+        z-index: 1;
+      }
+      .boxes-inner {
+        @extend %common-symbol;
+        position: absolute;
+        top: -3px;
+        right: -3px;
+      }
+    }
+    footer {
+      padding: 20px;
+      font-size: 0.687rem;
+      color: $secondary-color;
+      h6 {
+          font-size: 0.6rem;
+          color: $primary-color;
+      }
+      .send-via-sms {
+        &.disabled {
+            opacity: 0.45;
+        }
+      }
+    }
+  }
+}

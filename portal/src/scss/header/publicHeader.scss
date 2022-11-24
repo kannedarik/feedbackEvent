@@ -1,0 +1,145 @@
+@import '@/scss/common/_mixins.scss';
+/* Header CSS Starts Here */
+header {
+  @include box-shadow(0 0 10px 0, rgba(0, 0, 0, 0.4));
+}
+.rupeek-logo-wrapper {
+  max-width: 152px;
+}
+
+.rbi-approved-nbfc {
+  padding-left: 15px;
+  margin-left: 15px;
+  border-left: 1px solid $form-element-border;
+  position: relative;
+  img {
+    max-width: 34px;
+    width: 100%;
+    min-width: 34px;
+  }
+  h3 {
+    font-size: 0.85rem;
+    color: $primary-color;
+    line-height: 15px;
+    margin-left: 10px;
+    font-weight: $normal-font-weight;
+  }
+}
+.main-menu {
+  li {
+    display: inline-block;
+    padding: 0 10px;
+    &:not(:last-child) {
+      a {
+        color: $primary-color;
+      }
+    }
+    a {
+      &:hover {
+        color: #EA5518;
+      }
+    }
+  }
+  & li:last-child{
+    padding-right: 0;
+  }  
+}
+
+/* Hamburger Menu Starts Here */
+.hamburger-bar-1, .hamburger-bar-2, .hamburger-bar-3 {
+  width: 28px;
+  height: 4px;
+  background: -webkit-linear-gradient(90deg, rgb(242, 102, 34), rgb(247, 143, 30));
+  background: linear-gradient(90deg, rgb(242, 102, 34), rgb(247, 143, 30));
+  margin: 5px 0;
+  @include transition(0.5s);
+  border-radius: $base-border-radius;
+}
+
+/* Hamburger Menu Close Button Animation */
+.active {
+  .hamburger-bar-1 {
+    @include transform(rotate(-45deg) translate(-5px, 5px));
+  }
+  .hamburger-bar-2 {
+    opacity: 0;
+  }
+  .hamburger-bar-3 {
+    @include transform(rotate(45deg) translate(-8px, -8px));
+  }
+}
+
+@media(max-width: 767px){
+  .rupeek-logo-wrapper {
+    img {
+      height: 40px;
+    }
+  }
+  .rbi-approved-nbfc {
+    padding-left: 10px;
+    margin-left: 10px;
+    img {
+      height: 40px;
+    }
+    h3 {
+      font-size: 0.9rem;
+      line-height: 13px;
+    }
+  }
+  .main-menu {
+    display: block;
+    position: absolute;
+    top: 70px;
+    background-color: $white-color;
+    left: 0;
+    right:0;
+    visibility: hidden;
+    opacity: 0;
+    max-height: calc(100vh - 50px);
+    overflow-y: auto;
+    li {
+      display: block;
+      @include padding(10px);
+      text-align: center;
+    }
+  }
+  .hamburger-menu-wrapper.active ~ .main-menu{
+    opacity: 1;
+    visibility: visible;
+    @include box-shadow($value:0 4px 10px, $color:rgba(33, 30, 30, 0.2));
+  }
+  .rbi-approved-nbfc {
+    .rbi-disclaimer {
+      position: fixed;
+      left: 0;
+      top: 62px;
+      min-width: 300px;
+      max-width: 320px;
+      width: 100%;
+      z-index: 1;
+      &:before {
+        left: 50%;
+        @include transform(translate(-50%,-65%));
+      }
+    }
+  }
+}
+@media(min-width: 768px){
+  .hamburger-menu-wrapper{
+    display: none;
+  }
+}
+@media (min-width: 768px) and (max-width: 767px) {
+  .rupeek-logo-wrapper {
+    max-width: 120px;
+  }
+  .rbi-approved-nbfc {
+    padding-left: 10px;
+    margin-left: 10px;
+  }
+  .main-menu {
+    li {
+      padding: 0 3px;
+    }
+  }
+}

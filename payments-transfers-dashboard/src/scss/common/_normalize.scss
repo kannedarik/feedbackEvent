@@ -1,0 +1,83 @@
+@import '_variables.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none !important;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none !important;
+  color: $primary-color;
+  &:hover {
+    color: $primary-color;
+  }
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+}
+
+a:focus,
+a:hover,
+a:active {
+  outline: medium none !important;
+  text-decoration: none;
+}
+
+
+/* Change Default Styling for <H1> TO </H6> tags */
+
+h1 {
+  font-size: 2rem;
+  letter-spacing: -.2px;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h3 {
+  font-size: 1.3rem;
+}
+
+h4 {
+  font-size: 1.2rem;
+}
+
+h5 {
+  font-size: 1.15rem;
+}
+
+h6 {
+  font-size: 1.15rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+/* Change Default Styling for <H1> TO </H6> tags */
+
+address {
+  font-style: normal;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}

@@ -1,0 +1,43 @@
+{
+  "apps": [{
+    "name": "oms",
+    "script": "./src/index.js",
+    "instances": 1,
+    "exec_mode": "cluster"
+  }, {
+    "name": "oms-worker",
+    "script": "./src/worker.js",
+    "instances": 1,
+    "exec_mode": "cluster"
+  }, {
+    "name": "consumer-docsign",
+    "script": "./src/consumers/docsign.js",
+    "instances": 1,
+    "exec_mode": "cluster"
+  }, {
+    "name": "consumer-payment",
+    "script": "./src/consumers/payment.js",
+    "instances": 1,
+    "exec_mode": "cluster"
+  }, {
+    "name": "oms-agenda-worker",
+    "script": "./src/scheduler.js",
+    "instances": 1,
+    "exec_mode": "cluster"
+  }, {
+    "name": "consumer-mis",
+    "script": "./src/consumers/mis/index.js",
+    "instances": 1,
+    "exec_mode": "cluster"
+  }, {
+    "name": "consumer-partpayment",
+    "script": "./src/consumers/partpayment.js",
+    "instances": 1,
+    "exec_mode": "cluster"
+  }, {
+    "name": "consumer-bulkfileupload",
+    "script": "./src/consumers/fileupload.js",
+    "instances": 1,
+    "exec_mode": "cluster"
+  }]
+}

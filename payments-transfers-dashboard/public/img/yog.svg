@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+    <defs>
+        <style>
+            .cls-1{fill:#f01716}.cls-2{fill:#fff}
+        </style>
+    </defs>
+    <g id="Icon" transform="translate(-40 -163)">
+        <rect id="Rectangle_234" width="32" height="32" class="cls-1" data-name="Rectangle 234" rx="8" transform="translate(40 163)"/>
+        <g id="Group_528" data-name="Group 528" transform="translate(45.203 168.963)">
+            <path id="Rectangle_236" d="M0 0h6.523v6.523H0z" class="cls-2" data-name="Rectangle 236" transform="rotate(45 5.486 13.244)"/>
+            <path id="Path_515" d="M882.291 526.968h4.459v4.659z" class="cls-2" data-name="Path 515" transform="translate(-866.641 -522.836)"/>
+            <path id="Path_516" d="M852.624 531.641v-4.459h4.659z" class="cls-2" data-name="Path 516" transform="translate(-850.795 -522.951)"/>
+            <path id="Rectangle_237" d="M0 0h1.902v13.511H0z" class="cls-2" data-name="Rectangle 237" transform="translate(10.021 7.408)"/>
+            <path id="Rectangle_238" d="M0 0h2.029v9.907H0z" class="cls-2" data-name="Rectangle 238" transform="rotate(45 2.214 23.912)"/>
+            <path id="Rectangle_239" d="M0 0h2.029v9.907H0z" class="cls-2" data-name="Rectangle 239" transform="rotate(135 3.125 8.75)"/>
+            <path id="Path_517" d="M857.016 543.361v5.3l-8.316-8.321 2.648-2.648z" class="cls-2" data-name="Path 517" transform="translate(-848.699 -528.564)"/>
+            <path id="Path_518" d="M878.151 543.98v5.3l8.317-8.317-2.648-2.648z" class="cls-2" data-name="Path 518" transform="translate(-864.43 -528.895)"/>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,208 @@
+@import '../common/_variables.scss';
+
+.vgt-table th.sortable {
+  &:before ,&:after{
+    content: none;
+  }
+}
+.custom-control-label {
+  cursor: pointer;
+}
+
+.fields_div {
+  input {
+    width: 100%;		
+  }
+  label {
+    background: -webkit-gradient(linear, right top, left top, from($theme-second-color), to($theme-color));
+    background: linear-gradient(to left, $theme-second-color, $theme-color);
+    padding: 5px 20px 3px;
+    margin-bottom: 0;
+    border-radius: 4px 4px 0 0;
+    font-size: $base-font-size - 2px;
+    color: $white-color;  
+  }
+}
+.date-style {
+  height: 38px !important;
+  box-shadow: none;
+  border-radius: 0px;
+  background: #fbfbfb;
+  padding: 0px 15px !important;
+  font-weight: $normal-font-weight;
+  line-height: 38px;
+  &::-webkit-inner-spin-button,
+  &::-webkit-calendar-picker-indicator {
+    -webkit-appearance: none;
+    color: transparent;
+    background: transparent;
+  }
+}
+input[type="date"].date-style {
+  background-image: url('../../assets/img/calender.jpg');
+  background-position: center right 14px;
+  background-size: 12px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.payment-data-form {
+  .important {
+    color: $error-text-color;
+    font-size: ($base-font-size * 2) - 4px;
+    line-height: 20px;
+    top: 3px;
+    &--sup {
+      position: absolute;
+      right:10px;
+      top:8px;
+    }
+  }
+  .table-layout {
+    border: 1px solid $form-element-border;
+    border-radius: $base-border-radius;
+    .table-label {
+      display: inline-block;
+      padding: 0px 15px;
+      margin-bottom: 0;
+      font-size: $base-font-size;
+      line-height: 26px;
+    }
+    .top-up {
+      top:6px;
+    }
+    .validate-btn {
+      padding: 10px 15px;
+      border: 0;
+      background: $theme-second-color;
+      margin: 15px;
+      color: $white-color;
+      border-radius: $base-border-radius * 4;
+      letter-spacing: 0.5px;
+      &.submit {
+        background:green;
+      }
+      &:disabled {
+        background: $form-element-border;
+      }
+    }
+    .icon-round {
+      width: 30px;
+      height: 30px;
+      border-radius: $base-border-radius * 10;
+      font-size: ($base-font-size * 2) - 4px;
+      cursor: pointer;
+      background-color: $theme-color;
+      border: 1px solid $theme-color;
+      color: $white-color;
+      line-height: 10px;
+      &:disabled {
+        background-color: $form-element-border;
+        border-color: $form-element-border;
+        cursor: text;
+      }
+    }
+  }
+  input {
+    border: 1px solid $form-element-border;
+    border-radius: $base-border-radius;
+  }
+  textarea {
+    border: 1px solid $form-element-border;
+    border-radius: $base-border-radius;
+    resize: none;
+  }
+  .select-dropdown {
+    border: 1px solid $form-element-border !important;
+    min-width: 140px;
+    vertical-align: middle;
+    font-size: $base-font-size;
+    border-radius: $base-border-radius;
+  }
+}
+
+.btn-rupeek {
+  background: -webkit-linear-gradient(90deg, $theme-second-color, $theme-color);
+  background: linear-gradient(90deg, $theme-second-color, $theme-color);
+  border-color: $theme-color;
+  font-weight: $bold-font-weight;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &:focus,&:hover,&:active {
+    box-shadow: none;
+    border-color: $theme-color !important;
+  }
+  &.collapsed {
+    border-bottom-right-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+    align-items: baseline;
+    &::after {
+      transform: rotate(0deg);
+    }
+  }
+  &::after {
+    content: "\276F";
+    width: 1em;
+    height: 1em;
+    text-align: center;
+    transition: all 0.35s;
+    transform: rotate(90deg);
+  }
+}
+
+.btn-outline-rupeek {
+  color: $theme-second-color;
+  border-color:$theme-second-color;
+  font-weight: $bold-font-weight;
+  background-color: $white-color;
+  padding: 4px 18px;
+  &.btn-secondary{
+    &:focus {
+      border-color:$theme-second-color;
+      background-image: linear-gradient(to top, $theme-second-color, $theme-color);
+      color: $white-color;
+      box-shadow: none;
+    }
+    &:not(:disabled):not(.disabled):active:focus{
+      box-shadow: none;
+    }
+    &:not(:disabled):not(.disabled):active {
+      color: $white-color;
+      border-color: $theme-second-color;
+      background-image: linear-gradient(to top, $theme-second-color, $theme-color);
+    }
+  }
+  &:hover {
+    color: $white-color;
+    background-color: $theme-second-color;
+    border-color: $theme-second-color;
+    background-image: linear-gradient(to top, $theme-second-color, $theme-color);
+  }
+}
+.btn-info {
+  font-size: 12px;
+  cursor: pointer;
+}
+#vanPaymentModal___BV_modal_body_ {
+  .close {
+    position: absolute;
+    top: -72px;
+    right: -15px;
+    opacity: 1;
+  }
+}
+.phone-number {
+  span{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-left: 8px;
+  }
+  .form-control {
+    padding-left: 40px;
+    height: 45px;
+  }
+}

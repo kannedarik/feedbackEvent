@@ -1,0 +1,97 @@
+{
+  "name": "oms",
+  "version": "1.0.0",
+  "description": "MicroService to order state machine like renewal/release/part release",
+  "author": "Srikanth Indrakanti",
+  "main": "src/index.js",
+  "license": "ISC",
+  "private": true,
+  "engines": {
+    "node": ">=12.15.0"
+  },
+  "scripts": {
+    "start": "node ./src/index.js",
+    "dev": "nodemon ./src/index.js",
+    "worker": "nodemon ./src/worker.js",
+    "scheduler": "nodemon ./src/scheduler.js",
+    "consumer:sign": "nodemon ./src/consumers/docsign.js",
+    "consumer:pay": "nodemon ./src/consumers/payment.js",
+    "consumer:mis": "nodemon ./src/consumers/mis/index.js",
+    "consumer:partpayment": "nodemon ./src/consumers/partpayment.js",
+    "consumer:bulkupload": "nodemon ./src/consumers/fileupload.js",
+    "consumer:lnv": "node ./src/consumers/lnvticket/index.js",
+    "lint": "eslint '**/*.js'",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "jest --config ./jest.config.js",
+    "test:watch": "npm run test -- --watch",
+    "test:coverage": "npm run test -- --coverage",
+    "docs": "apidoc -i src -o docs",
+    "postdocs": "open-cli docs/index.html"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm run lint"
+    }
+  },
+  "keywords": [
+    "oms"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Rupeekapp/sangraha.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Rupeekapp/sangraha/issues"
+  },
+  "homepage": "https://github.com/Rupeekapp/sangraha#readme",
+  "dependencies": {
+    "agenda": "^4.1.3",
+    "aws-sdk": "^2.639.0",
+    "axios": "^0.19.2",
+    "bluebird": "^3.7.2",
+    "body-parser": "^1.19.0",
+    "celebrate": "^12.0.1",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "csv-stringify": "^5.6.5",
+    "csvtojson": "^2.0.10",
+    "dotenv-safe": "^8.2.0",
+    "express": "^4.17.1",
+    "express-winston": "^4.0.3",
+    "helmet": "^3.21.3",
+    "http-status": "^1.4.2",
+    "lodash": "^4.17.15",
+    "method-override": "^3.0.0",
+    "moment": "^2.24.0",
+    "mongoose": "^5.9.4",
+    "multer": "^1.4.3",
+    "newrelic": "^6.10.0",
+    "order-id": "^1.1.0",
+    "passport": "^0.5.0",
+    "passport-custom": "^1.1.1",
+    "passport-http": "^0.3.0",
+    "redis": "^3.0.2",
+    "sqs-consumer": "^5.4.0",
+    "stream": "0.0.2",
+    "triple-beam": "^1.3.0",
+    "uuid": "^7.0.2",
+    "uuid-apikey": "^1.5.3",
+    "velocityjs": "^2.0.3",
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^4.4.2",
+    "zeebe-node": "1.3.0"
+  },
+  "devDependencies": {
+    "apidoc": "^0.20.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.1",
+    "husky": "^4.2.3",
+    "jest": "^26.1.0",
+    "nodemon": "^2.0.2",
+    "open-cli": "^5.0.0",
+    "redis-mock": "^0.56.3",
+    "supertest": "^6.1.3"
+  }
+}

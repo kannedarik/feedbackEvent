@@ -1,0 +1,262 @@
+@import '@/scss/common/_mixins.scss';
+
+%common-adress-shadow {
+  @include box-shadow($value:3px 3px 10px, $color:$form-element-border);
+  border-radius: $base-border-radius;
+  border: 1px solid $form-element-border;
+  .icon-map {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+  }
+}
+
+.payment-login-wrapper {
+  section.contact-support {
+    height: 100%;
+    #login-gif {
+      width: 100%;
+    }
+  }
+  &.enach-wrapper {
+    .otp-login-wrapper {
+      display: none;
+    }
+    .contact-support {
+      min-height: 372px;
+      background: linear-gradient(89deg, #ededed, #f0efef); 
+      background-color: #ededed;
+    }
+    .enach-details {
+      display: block;
+      h2 {
+        letter-spacing: 1px;
+        font-weight: $normal-font-weight;
+        line-height: 25px;
+        span {
+          font-weight: $bold-font-weight;
+          letter-spacing: 2.5px;
+        }
+      }
+      .info {
+        img {
+          max-width: 59px;
+        }
+        h5 {
+          font-size: 0.9rem;
+          margin-top: 5px;
+        }
+      }
+    }
+  }
+  .info {
+    img {
+      max-width: 59px;
+    }
+    h5 {
+      font-size: 0.9rem;
+      margin-top: 5px;
+    }
+  }
+  .enach-page-title {
+    display: block;
+  }
+  .enach-details {
+    display: none;
+  }
+  .enach-page-title { 
+    display: none;
+  }
+}
+.sign-in-wrapper {
+  @extend %common-adress-shadow;
+  .otp-login-wrapper {
+    border-right: 1px solid $form-element-border;
+    position: relative;
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.10);
+    }
+    h2 {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 10px;
+      font-weight: normal;
+      font-size: 1.1rem;
+    }
+  }
+  .form-wrapper {
+    max-width: 380px;
+    width: 100%;
+    padding: 0 10px;
+  }
+}
+/* Repay loan css Here */
+%display-none {
+  display: none;
+}
+
+.call-display {
+  @extend %display-none;
+}
+
+.call-prompt {
+  @extend %display-none;
+}
+
+#payment-phone-login-form {
+  @extend %display-none;
+}
+.know-more {
+  a {
+    font-size: 0.8rem;
+    font-weight: $bold-font-weight;
+    &:hover {
+      color: $theme-color;
+    }
+  }
+}
+.form-control {
+  border: 2px solid #ccc;
+  background-color: #f2f2f2;
+  &.valid-input {
+    background-color: white;
+    color: #A0D94D;
+    border-color: #A0D94D;
+  }
+  &.invalid-pin {
+    border-color: #F76964;
+  }
+  &::placeholder {
+    color: $form-element-border;
+    font-weight: 500;
+    font-size: 1.05rem;
+  }
+  &:focus,
+  &.invalid-input {
+    border: 2px solid $theme-border-color;
+    border-radius: 5px;
+  }
+  &.focus {
+    background-color: white;
+  }
+  &.invalid-input {
+    color: $theme-border-color;
+  }
+}
+.login-form-wrapper {
+    min-width: 300px;
+    width: 100%;
+    padding: 20px;
+    label {
+        font-size: 0.75rem;
+    }
+    .btn-sign-in {
+        @extend .btn-proceed;
+    }
+    .country-code-wrapper {
+        display: flex;
+        position: relative;
+        .form-control {
+            flex-basis: 100%;
+            border-radius: 0 5px 5px 0;
+        }
+        .country-code {
+            padding-left: 1rem;
+            padding-right: 0.75rem;
+            font-size: 1.1rem;
+            border: 2px solid #ccc;
+            border-right: none;
+            border-radius: 5px 0 0 5px;
+            background-color: #ccc;
+        }
+        .close {
+            position: absolute;
+            top: 50%;
+            right: 15px;
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @include transform(translateY(-50%));
+            background-color: black;
+            border-radius: 100%;
+            cursor: pointer;
+
+            &.invalid-input {
+                background-color: $theme-color;
+            }
+
+            img {
+                width: 70%;
+                display: block;
+            }
+        }
+    }
+    input[type=button] {
+        &:hover {
+            border: 1px solid $theme-border-color;
+            color: white;
+            box-shadow: none;
+        }
+        &:disabled {
+            background-color: $theme-button-disabled;
+            border: 1px solid #ccc;
+            box-shadow: none;
+        }
+    }
+}
+.otp-container {
+  .flex-1 {
+    max-width: 48px;
+  }
+}
+@media (min-width: 992px) {
+  .payment-login-wrapper {
+    min-height: 500px;
+    height: calc(100vh - 65px);
+  }
+  .sign-in-wrapper {
+    max-width: 85%;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 767px) {
+  .sign-in-wrapper {
+    @include flex-direction(column-reverse);
+    max-width: 100%;
+  }
+  .page-heading {
+    padding-top: 30px;
+    span {
+      display: block;
+    }
+  }
+}
+@media (max-width: 991px) {
+  .payment-login-wrapper.enach-wrapper {
+    &.enach-wrapper {
+      .contact-support {
+        min-height: 350px;
+      }
+    }
+  }
+  .sign-in-wrapper {
+    .otp-login-wrapper {
+      h2 {
+        top: 5px;
+        padding: 0;
+      }
+    }
+    .form-wrapper {
+      padding: 30px 10px;
+    }
+  }
+}

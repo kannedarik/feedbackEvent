@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18.632" height="18.632" viewBox="0 0 18.632 18.632">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="18.632" height="18.632" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="icon_previous_disabled" clip-path="url(#clip-path)">
+    <g id="icon_previous_disabled-2" data-name="icon_previous_disabled" transform="translate(159 697) rotate(180)">
+      <path id="Path_1033" data-name="Path 1033" d="M9.316,0A9.316,9.316,0,1,1,0,9.316,9.316,9.316,0,0,1,9.316,0Z" transform="translate(140.368 678.368)" fill="#ccc"/>
+      <path id="Stroke_3" data-name="Stroke 3" d="M4.153,0,0,4.153,4.153,8.306" transform="translate(152.077 691.653) rotate(180)" fill="none" stroke="#b3b3b3" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+    </g>
+  </g>
+</svg>

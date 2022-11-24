@@ -1,0 +1,102 @@
+@import '@/scss/common/_variables.scss';
+
+header {
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  border-bottom: 1px solid $form-element-border;
+}
+
+.margin-10px {
+  margin: 0 10px;
+}
+
+.rupeek-logo-wrapper {
+  max-width: 120px;
+}
+
+.right-header {
+  max-width: calc(100% - 100px);
+}
+
+.right-header>ul>li {
+  display: inline-block;
+}
+
+.right-header>ul>li>a {
+  float: left;
+  padding: 10px 20px;
+}
+
+.right-header>ul>li a:hover {
+  background-color: #ddd;
+}
+
+.right-header>ul>li:last-child>a {
+  padding: 10px 10px;
+}
+
+.profile-pic {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-image: url("/static/images/profile-image/sandeep.jpeg");
+  background-size: contain;
+}
+
+.header-last-dropdown.dropdown .dropdown-menu {
+  left: initial;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.dropdown-menu>li>a {
+  padding: 10px 20px;
+}
+
+.header-last-dropdown .dropdown-menu {
+  min-width: 230px;
+}
+
+.header-last-dropdown .dropdown-menu li:first-child {
+  padding: 15px 15px;
+}
+
+.header-last-dropdown .dropdown-menu li:last-child {
+  border-top: 1px solid #ddd;
+  background-color: #f4f3f3;
+}
+
+.header-last-dropdown .dropdown-menu li:last-child a {
+  padding: 3px 15px;
+  float: right;
+  margin: 10px 10px;
+  border: 1px solid #ddd;
+  border-radius: 2px;
+  background-color: #ddd;
+  font-weight: 700;
+}
+
+.header-last-dropdown.open {
+  background-color: #fff;
+}
+
+.header-last-dropdown.open:hover {
+  background-color: #fff;
+}
+
+.user-details {
+  max-width: calc(100% - 30px);
+  width: 100%;
+}
+
+a.header-last-dropdown:hover {
+  color: #000;
+}
+
+.dropdown-menu.open {
+    display: block;
+}

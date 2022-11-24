@@ -1,0 +1,29 @@
+<div style="font-family: Arial">Dear Sir/Madam, <br><br>
+
+  E-Sign Renewal <br><br>
+  Please close the following account and open a new account for the renewal. Kindly debit our OD account no.<br> {{odAccountNumber}} for the closure of the following account and and disburse the new loan account into the same OD<br>account. <br><br>
+  Please download the E-Sign pledge card from the lender dashboard and create a new loan as per the latest E-<br>Signed pledge card.<br><br>
+  <table style="border: 1px solid black; border-collapse: collapse;">
+    <thead>
+    <tr>
+      <th style="border: 1px solid black; padding: 4px 16px; text-transform: uppercase; background-color: #ffe8f0; text-align: center;">BORROWER_NAME</th>
+      <th style="border: 1px solid black; padding: 4px 16px; text-transform: uppercase; background-color: #ffe8f0; text-align: center;">LOAN_ACCOUNT_NUMBER</th>
+      <th style="border: 1px solid black; padding: 4px 16px; text-transform: uppercase; background-color: #ffe8f0; text-align: center;">BRANCH NAME</th>
+      <th style="border: 1px solid black; padding: 4px 16px; text-transform: uppercase; background-color: #ffe8f0; text-align: center;">RENEWAL DETAILS</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#orderItemDetails}}
+    <tr>
+      <td style="border: 1px solid black; padding: 0px 16px 0px 16px; text-align: center;">{{customerName}}</td>
+      <td style="border: 1px solid black; padding: 0px 16px 0px 16px; text-align: center;">{{loanAccountNumber}}</td>
+      <td style="border: 1px solid black; padding: 0px 16px 0px 16px; text-align: center;">{{branchName}}</td>
+      <td style="border: 1px solid black; padding: 0px 16px 0px 16px; text-align: center;"> (Refer the pledge card from<br>dashboard)</td>
+    </tr>
+    {{/orderItemDetails}}
+    </tbody>
+  </table>
+  <br><br>
+  Regards,<br><br>
+  Rupeek Fintech Pvt Ltd.<br><br>
+</div>

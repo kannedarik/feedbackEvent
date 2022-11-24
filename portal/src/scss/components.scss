@@ -1,0 +1,37 @@
+@import './common/variables';
+.button-primary {
+  border-radius: 60px;
+  padding: 14px 30px;
+  font-size: 1.25rem;
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to top, $light-blue-color, #6cb9f5);
+  -webkit-box-shadow: 2.1px 2.1px 10px 0 rgba(88, 88, 88, 0.2);
+  box-shadow: 2.1px 2.1px 10px 0 rgba(88, 88, 88, 0.2);
+  font-weight: 500;
+  min-height: 40px;
+  min-width: 100px;
+  border: none;
+  color: white;
+  &:disabled {
+    opacity: 0.5;
+  }
+  &:hover {
+    color: $white-color;
+  }
+}
+
+.button-link {
+  border-radius: 60px;
+  padding: 14px 30px;
+  font-size: 1.25rem;
+  color: var(--primary);
+  background: none;
+  font-weight: 500;
+  min-height: 40px;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

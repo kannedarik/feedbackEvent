@@ -1,0 +1,13 @@
+{
+  "apps": [{
+    "name": "docsigning",
+    "script": "./src/index.js",
+    "instances": 1,
+    "exec_mode": "cluster"
+  }, {
+    "name": "worker",
+    "script": "./src/worker.js",
+    "instances": 2,
+    "exec_mode": "cluster"
+  }]
+}

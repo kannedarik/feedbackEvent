@@ -1,0 +1,13 @@
+{
+  "apps": [{
+    "name": "cis",
+    "script": "./src/index.js",
+    "instances" : 1,
+    "exec_mode": "cluster",
+  }, {
+    "name": "mis_consumer",
+    "script": "./src/consumer/mis.js",
+    "instances" : 1,
+    "exec_mode": "cluster",
+  }]
+}

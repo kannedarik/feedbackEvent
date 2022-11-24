@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_0tpgj0e" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Zeebe Modeler" exporterVersion="0.11.0">
+  <bpmn:process id="part-release-case-creation" name="Part Release Case Creation in Salesforce" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_0wi0ght</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:serviceTask id="Activity_0xbhg7v" name="Fetch loan details">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="partrelease.salesforce.loan.details" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0wi0ght</bpmn:incoming>
+      <bpmn:outgoing>Flow_0kbl64c</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_0urgghm" name="Create case in Salesforce">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="partrelease.salesforce.case.create" />
+        <zeebe:taskHeaders>
+          <zeebe:header key="category" value="transactional" />
+          <zeebe:header key="provider" value="salesforce" />
+          <zeebe:header key="type" value="ticket" />
+        </zeebe:taskHeaders>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0tsg2b0</bpmn:incoming>
+      <bpmn:outgoing>Flow_0p414n6</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_0wi0ght" sourceRef="StartEvent_1" targetRef="Activity_0xbhg7v" />
+    <bpmn:exclusiveGateway id="Gateway_1bj0776" name="City Launched ?">
+      <bpmn:incoming>Flow_0kbl64c</bpmn:incoming>
+      <bpmn:outgoing>Flow_0tsg2b0</bpmn:outgoing>
+      <bpmn:outgoing>Flow_0s7d3hc</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0kbl64c" sourceRef="Activity_0xbhg7v" targetRef="Gateway_1bj0776" />
+    <bpmn:sequenceFlow id="Flow_0tsg2b0" name="Yes" sourceRef="Gateway_1bj0776" targetRef="Activity_0urgghm">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">= isCityLaunched = true</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:endEvent id="Event_0lg6c2e">
+      <bpmn:incoming>Flow_0s7d3hc</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0s7d3hc" name="No" sourceRef="Gateway_1bj0776" targetRef="Event_0lg6c2e">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">= isCityLaunched = false</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:endEvent id="Event_026ii92">
+      <bpmn:incoming>Flow_0p414n6</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0p414n6" sourceRef="Activity_0urgghm" targetRef="Event_026ii92" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="part-release-case-creation">
+      <bpmndi:BPMNEdge id="Flow_0wi0ght_di" bpmnElement="Flow_0wi0ght">
+        <di:waypoint x="215" y="307" />
+        <di:waypoint x="280" y="307" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0kbl64c_di" bpmnElement="Flow_0kbl64c">
+        <di:waypoint x="380" y="307" />
+        <di:waypoint x="475" y="307" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0tsg2b0_di" bpmnElement="Flow_0tsg2b0">
+        <di:waypoint x="500" y="282" />
+        <di:waypoint x="500" y="160" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="506" y="218" width="18" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0s7d3hc_di" bpmnElement="Flow_0s7d3hc">
+        <di:waypoint x="525" y="307" />
+        <di:waypoint x="652" y="307" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="581" y="289" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0p414n6_di" bpmnElement="Flow_0p414n6">
+        <di:waypoint x="550" y="120" />
+        <di:waypoint x="642" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="289" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0q4tako_di" bpmnElement="Activity_0xbhg7v">
+        <dc:Bounds x="280" y="267" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1bj0776_di" bpmnElement="Gateway_1bj0776" isMarkerVisible="true">
+        <dc:Bounds x="475" y="282" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="463" y="339" width="80" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ss9hdu_di" bpmnElement="Activity_0urgghm">
+        <dc:Bounds x="450" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0lg6c2e_di" bpmnElement="Event_0lg6c2e">
+        <dc:Bounds x="652" y="289" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_026ii92_di" bpmnElement="Event_026ii92">
+        <dc:Bounds x="642" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

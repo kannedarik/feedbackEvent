@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="57" height="49" viewBox="0 0 57 49">
+    <defs>
+        <style>
+            .cls-1{fill:#eb8825}.cls-2{fill:#fff}
+        </style>
+    </defs>
+    <g id="Group_8146" data-name="Group 8146" transform="translate(-139 -71)">
+        <path id="Polygon_1" d="M25.907 4.459a3 3 0 0 1 5.187 0l23.284 40.033A3 3 0 0 1 51.785 49H5.215a3 3 0 0 1-2.593-4.508z" class="cls-1" data-name="Polygon 1" transform="translate(139 71)"/>
+        <g id="Group_362" data-name="Group 362" transform="translate(-151.235 -497.152)">
+            <rect id="Rectangle_3" width="3.72" height="17.857" class="cls-2" data-name="Rectangle 3" rx="1.86" transform="translate(317 584)"/>
+            <rect id="Rectangle_4" width="3.72" height="3.72" class="cls-2" data-name="Rectangle 4" rx="1.86" transform="translate(317 604.833)"/>
+        </g>
+    </g>
+</svg>

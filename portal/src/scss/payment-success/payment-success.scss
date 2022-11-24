@@ -1,0 +1,17 @@
+@import '../common/variables';
+
+.payment-status {
+  background: #76C11B;
+  height: 300px;
+  h4 {
+    font-size: 1.5rem;
+  }
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  .el-button--text {
+    color: $secondary-color;
+  }
+}

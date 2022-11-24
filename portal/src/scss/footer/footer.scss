@@ -1,0 +1,125 @@
+@import '@/scss/common/_mixins.scss';
+
+/* ==========
+Footer Wrapper Starts Here 
+========== */
+.footer-links-wrapper{
+  @include justify-content(space-between);
+}
+
+.footer-links{
+  li {
+    margin-left: 50px;
+    display: inline-block;
+    font-size: 1.2rem;
+    a:hover {
+      color: #EA5518;
+    }
+  }
+}
+.footer-rbi-disclaimer {
+  font-size: 0.6rem;
+  padding-bottom: 20px;
+  line-height: initial;
+  img {
+    max-height: 45px;
+    margin-right: 15px;
+  }
+}
+
+.copyright-wrapper{
+  background: -webkit-linear-gradient(90deg, rgb(242, 102, 34), rgb(247, 143, 30));
+  background: linear-gradient(90deg, rgb(242, 102, 34), rgb(247, 143, 30));
+  li {
+    &:first-child{
+      margin-left: 0;
+    }
+  }
+  li,a{
+    color: #fff;
+  }
+  a:hover{
+    color: #484848 !important;
+  }
+}
+
+.mobile-fixed-footer{
+  position: fixed;
+  bottom:0;
+  padding: 10px;
+  z-index: 1111;
+  @include transform(translateX(100%));
+  opacity: 0;
+  visibility: hidden;
+  background-image: url('/static/img/fixed-footer-mobile/mobile-footer.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  //@include box-shadow($value:inset 1px 0px 5px 3px,$color:$primary-color); 
+  &.active{
+    @include transform(translateX(0));
+    opacity: 1;
+    visibility: visible;
+  }
+  .display-flex {
+    @include justify-content(center);
+    position: relative;
+  }
+  .icon {
+    max-width: 40px;
+    height: 40px;
+    background-color: #f26422;
+    border: 2px solid #40150a;
+    border-radius: 50%;
+    position: absolute;
+    right: -5px;
+    top: -20px;
+    width: 100%;
+    img {
+      max-width: 25px;
+    }
+  }
+  .theme-secondary-color {
+    color: #EA5518;
+    margin-right: 10px;
+  }
+  .mobile-fixed-footer h4 {
+    font-size: 1.4rem;
+    letter-spacing: 0.5px;
+  }
+}
+/* ==========
+Media Queries Footer CSS 
+========== */
+@media(max-width: 767px) {
+  .google-play-store-icon {
+      margin-bottom: 20px;
+  }
+  .footer-links {
+    li {
+      margin: 0 10px;
+      a {
+        color: $theme-color;
+      }
+    }
+  }
+  .copyright-wrapper{
+    li {
+      &:first-child {
+        margin-bottom: 20px;
+        display: block;
+      }
+      &:nth-child(2) {
+        margin-left: 0;
+      }
+      a {
+        color: #fff;
+        &:hover {
+          color: #40150a;
+        }
+      }
+    }
+  }
+  .footer-rbi-disclaimer {
+    font-size: 0.45rem;
+  }
+}

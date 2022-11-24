@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+    <defs>
+        <style>
+            .cls-2{fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round;stroke-width:4px}
+        </style>
+    </defs>
+    <g id="icon_Fail" transform="translate(-462 -640.218)">
+        <circle id="Ellipse_266" cx="14" cy="14" r="14" fill="#d1281e" transform="translate(462 640.218)"/>
+        <g id="Group_11287" transform="translate(471.876 649.876)">
+            <path id="Path_530" d="M574.552 181.819l8.464-8.464" class="cls-2" transform="translate(-574.552 -173.354)"/>
+            <path id="Path_531" d="M0 8.464L8.464 0" class="cls-2" transform="rotate(90 4.232 4.233)"/>
+        </g>
+    </g>
+</svg>

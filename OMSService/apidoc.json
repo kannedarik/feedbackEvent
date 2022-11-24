@@ -1,0 +1,7 @@
+{
+  "name": "Order Management System",
+  "version": "1.0.0",
+  "description": "Microservice to maintain order state machine like renewal/release/part release",
+  "title": "Order Management System",
+  "url" : "https://oms.rupeek.com/"
+}
