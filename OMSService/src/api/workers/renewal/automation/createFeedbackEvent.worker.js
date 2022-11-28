@@ -16,7 +16,6 @@ module.exports = () => ({
                 formId: formId,
                 metaData: metaData,
             }
-
             FeedbackService.createFeedbackEvent(payload);
 
         }catch(err){
